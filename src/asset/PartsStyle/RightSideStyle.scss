@@ -1,0 +1,66 @@
+@import "../Defaults/Default.scss";
+
+.rightSide {
+    font-family: $global-font-family;
+    padding: 1.3rem 1rem;
+}
+
+.twitterTitle {
+    display: flex;
+    span {
+        color: $global-twitter-color;
+    }
+    .twitterFarsi {
+        font-size: 21px;
+        font-weight: 600;
+        margin-top: 12px;
+    }
+
+    .icon {
+        font-size: 40px;
+        margin-left: 21px;
+    }
+}
+
+.hashtagTittle {
+    font-size: 1.25rem;
+    margin: {
+        top: 3rem;
+        bottom: 2rem;
+    }
+}
+
+.hashtagButton {
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    font-family: $global-font-family;
+    margin-bottom: .8rem;
+    .hashtagContainer {
+        display: flex;
+        .hashtagIcon {
+            align-items: center;
+            border: 3px solid black;
+            border-radius: 12px;
+            width: 32px;
+            height: 32px;
+            font-size: 20px;
+            .hashtagSelf {
+                margin: {
+                    top: 5px;
+                    right: -1px;
+                }
+            }
+        }
+        .hashtagSubject {
+            margin: {
+                top: 0.4rem;
+                right: 0.8rem;
+            }
+            font-size: large;
+        }
+    }
+    .hashtagSubject:hover {
+        color: blue;
+    }
+}

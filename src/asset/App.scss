@@ -1,6 +1,40 @@
-.App {
-  margin-top: 25%;
-  justify-content: center;
-  text-align: center;
+@import './Defaults/Default.scss';
+@import './PartsStyle/RightSideStyle.scss';
+
+body {
+    margin: 0;
+    font-family: $global-font-family;
 }
 
+.app {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    hr {
+        margin: 0;
+        height: 100%;
+        width: 1.75px;
+        background-color: #7EBAFF;
+        border:#7EBAFF;
+    }
+}
+
+
+
+.rightSide {
+    flex: 18%;
+}
+
+.mainSide {
+    flex: 60%;
+}
+
+.leftSide {
+    flex: 25%;
+}
+
+// @media only screen and (max-width: 1000px) {
+//     .app {
+//         flex-direction: column;
+//     }
+// }

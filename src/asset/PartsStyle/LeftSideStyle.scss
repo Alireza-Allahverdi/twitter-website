@@ -1,0 +1,69 @@
+@import "../Defaults/Default.scss";
+
+.leftSide {
+    font-family: $global-font-family;
+    padding: 1.7rem 1rem;
+    flex-grow: 1;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: row-reverse;
+    .profileText {
+        flex-direction: column;
+        .persianUserName {
+            direction: ltr;
+        }
+        .userID {
+            font-size: 0.9rem;
+            color: #808080;
+            margin-top: 2px;
+        }
+    }
+}
+
+.bestTwittersContainer {
+    background-color: #f5f8fa;
+    margin-top: 2rem;
+    border-radius: 2rem;
+    padding: 11px 24px;
+    .bestTwitterTittle {
+        font-size: 1.25rem;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .divider {
+        width: 100%;
+        height: 1.5px;
+        background-color: $global-twitter-color;
+        margin-bottom: 15px;
+    }
+    .bestTwittersButton {
+        cursor: pointer;
+        font-family: $global-font-family;
+        border: none;
+        background-color: inherit;
+        text-align: right;
+        .twitters {
+            display: flex;
+            padding: 10px 0;
+            .twitterProfileText {
+                width: max-content;
+                margin-right: 0.5rem;
+                .twitterPersianName {
+                    font-size: 1rem;
+                }
+                .twitterID {
+                    font-size: 0.9rem;
+                    color: #808080;
+                    margin-top: 2px;
+                }
+            }
+        }
+    }
+    .twittersDivider {
+        width: 100%;
+        height: 1px;
+        background-color: rgb(151, 151, 151);
+    }
+}

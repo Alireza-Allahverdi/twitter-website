@@ -10,15 +10,15 @@ function App() {
 
         <div className="app">
             <div className='rightSide'>
-                <RightSide />
+                <RightSide /> 
             </div>
             <hr />
-
-            <div className="mainSide">
-                Main Side Boyyiii
+            <div className='mainSide'>
+                <MainSide />
             </div>
-            <div className="leftSide">
-                Left Side Boy
+            <hr />
+            <div className='leftSide'>
+                <LeftSide />
             </div>
 
 

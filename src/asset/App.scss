@@ -1,5 +1,7 @@
 @import './Defaults/Default.scss';
 @import './PartsStyle/RightSideStyle.scss';
+@import './PartsStyle/MainSideStyle.scss';
+@import './PartsStyle/LeftSideStyle.scss';
 
 body {
     margin: 0;
@@ -19,18 +21,16 @@ body {
     }
 }
 
-
-
 .rightSide {
-    flex: 18%;
+    flex: .18;
 }
-
 .mainSide {
-    flex: 60%;
+    flex: .6;
+    max-width: 60%;
 }
-
 .leftSide {
-    flex: 25%;
+    flex: .22;
+    max-width: 22%;
 }
 
 // @media only screen and (max-width: 1000px) {

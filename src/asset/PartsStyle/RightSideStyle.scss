@@ -2,7 +2,8 @@
 
 .rightSide {
     font-family: $global-font-family;
-    padding: 1.3rem 1rem;
+    padding: 1.5rem 1rem;
+    flex-grow: 1;
 }
 
 .twitterTitle {
@@ -35,7 +36,7 @@
     border: none;
     background-color: white;
     font-family: $global-font-family;
-    margin-bottom: .8rem;
+    margin-bottom: 0.8rem;
     .hashtagContainer {
         display: flex;
         .hashtagIcon {
@@ -46,10 +47,7 @@
             height: 32px;
             font-size: 20px;
             .hashtagSelf {
-                margin: {
-                    top: 5px;
-                    right: -1px;
-                }
+                margin-top: 5px;
             }
         }
         .hashtagSubject {

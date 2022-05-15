@@ -1,7 +1,7 @@
 @import './Defaults/Default.scss';
-@import './PartsStyle/RightSideStyle.scss';
-@import './PartsStyle/MainSideStyle.scss';
-@import './PartsStyle/LeftSideStyle.scss';
+@import './PartsStyle/Left/LeftSideStyle.scss';
+@import './HomePageStyle/MainSideStyle.scss';
+@import './PartsStyle/Right/RightSideStyle.scss';
 
 body {
     margin: 0;

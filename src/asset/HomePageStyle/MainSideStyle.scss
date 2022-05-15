@@ -1,0 +1,14 @@
+@import './Header/Header.scss';
+@import './NewTweetSlot/NewTweet.scss';
+
+.mainSide {
+    font-family: $global-font-family;
+    background-color: #e6e6e6;
+}
+
+.headerDivider {
+    background-color: #7EBAFF;
+    filter: opacity(.2);
+    width: 100%;
+    height: 1.5px;
+}

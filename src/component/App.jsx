@@ -1,5 +1,5 @@
 import RightSide from './Sides/RightSide/RightSide';
-import MainSide from './Sides/Main/MainSide';
+import MainSide from './HomePage/MainSide';
 import LeftSide from './Sides/LeftSide/LeftSide';
 import '../asset/App.scss';
 

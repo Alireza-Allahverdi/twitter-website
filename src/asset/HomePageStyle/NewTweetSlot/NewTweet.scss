@@ -1,0 +1,55 @@
+.newTweet {
+    font-family: $global-font-family;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: white;
+    .tweetContainer {
+        display: flex;
+        flex-direction: row;
+        .tweetUserImg {
+            width: max-content;
+        }
+        .tweetUserTextArea {
+            font-family: $global-font-family;
+            font-size: 1rem;
+            margin-right: 1rem;
+            border: none;
+            width: 100%;
+            &:focus {
+                outline: unset;
+            }
+        }
+    } 
+    .tweetButtonsContainer {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-top: 15px;
+        .TweetButton {
+            cursor: pointer;
+            font-family: $global-font-family;
+            color: white;
+            background-color: #5ea9dd;
+            min-height: 32px;
+            height: 32px;
+            min-width: 5.5rem;
+            border: none;
+            border-radius: 1rem;
+            line-height: 1rem;
+        }
+        .imgTweetButton {
+            width: 35px;
+            cursor: pointer;
+            color: red;
+            background-color: white;
+            border-radius: 50%;
+            border: .5px solid gray;
+            margin-left: 1rem;
+            .imgTweetIcon {
+                font-size: 16px;
+            }
+        }
+    }
+
+}
+

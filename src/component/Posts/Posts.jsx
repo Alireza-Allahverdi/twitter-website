@@ -1,7 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faImage, faRetweet } from '@fortawesome/free-solid-svg-icons'
-import { faReact } from '@fortawesome/free-brands-svg-icons'
 
 function Posts() {
     return (

@@ -3,6 +3,7 @@ import Home from '../pages/HomePage/Home';
 import LeftSide from './Sides/LeftSide/LeftSide';
 import '../asset/App.scss';
 import TweetByHashTag from '../pages/TweetsByHashTag/TweetByHashTag';
+import TweetByUser from '../pages/TweetByUser/TweetByUser';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
             <div className='mainSide'>
                 <Home />
                 {/* <TweetByHashTag /> */}
+                {/* <TweetByUser /> */}
             </div>
             <hr />
             <div className='leftSide'>

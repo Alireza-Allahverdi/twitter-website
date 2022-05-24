@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    padding: 20px;
+    background-color: white;
+}
+
+.headerIcon {
+    font-size: 1.2rem;
+}
+
+.headerTittle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-right: .5rem;
+}
+
+.headerDivider {
+    background-color: #7EBAFF;
+    filter: opacity(.2);
+    width: 100%;
+    height: 1.5px;
+}

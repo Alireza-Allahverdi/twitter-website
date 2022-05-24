@@ -1,9 +1,11 @@
 @import './Header/Header.scss';
 @import './NewTweetSlot/NewTweet.scss';
+@import './Posts/Posts.scss';
 
 .mainSide {
     font-family: $global-font-family;
     background-color: #e6e6e6;
+    overflow-y: auto;
 }
 
 .headerDivider {

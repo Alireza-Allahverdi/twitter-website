@@ -1,0 +1,75 @@
+.post {
+    font-family: $global-font-family;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: white;
+    margin-top: 7px;
+    flex: 1;
+    
+    // .posterImg {
+    //     width: max-content;
+    // }
+    .temporarily {
+        width: max-content;
+    }
+    .posterProfile {
+        display: flex;
+        flex-direction: row;
+        .posterPersianName {
+            margin-right: 1rem;
+        }
+        .posterID {
+            font-size: 0.9rem;
+            color: #808080;
+            margin: {
+                top: 0.1rem;
+                right: 0.5rem;
+            }
+        }
+    }
+    .postText {
+        margin-top: 1rem;
+        font-size: .95rem;
+    }
+
+    .postStuffContainer {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-top: 15px;
+        .reTweetButton {
+            max-width: 35px;
+            max-height: 33px;
+            cursor: pointer;
+            color: $global-twitter-color;
+            background-color: white;
+            border-radius: 50%;
+            border: 0.5px solid gray;
+            margin-left: 1rem;
+            align-items: center;
+            justify-content: center;
+            .reTweetIcon {
+                font-size: 16px;
+            }
+        }
+        .likeButton {
+            max-width: 35px;
+            max-height: 32px;
+            cursor: pointer;
+            color: red;
+            background-color: white;
+            border-radius: 50%;
+            border: 0.5px solid gray;
+            margin-left: 1rem;
+            align-items: center;
+            justify-content: center;
+            .likeIcon {
+                font-size: 16px;
+            }
+        }
+        .likeNumber {
+            color: gray;
+            padding: 7px 10px;
+        }
+    }
+}

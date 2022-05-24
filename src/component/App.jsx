@@ -1,5 +1,5 @@
 import RightSide from './Sides/RightSide/RightSide';
-import MainSide from './HomePage/MainSide';
+import Home from './HomePage/Home';
 import LeftSide from './Sides/LeftSide/LeftSide';
 import '../asset/App.scss';
 
@@ -14,7 +14,7 @@ function App() {
             </div>
             <hr />
             <div className='mainSide'>
-                <MainSide />
+                <Home />
             </div>
             <hr />
             <div className='leftSide'>

@@ -1,3 +1,4 @@
+// the whole container of posts
 .post {
     font-family: $global-font-family;
     display: flex;
@@ -10,15 +11,18 @@
     // .posterImg {
     //     width: max-content;
     // }
-    .temporarily {
+    .temporarily { // a temporarily used icon instead of picture untill the api arrives
         width: max-content;
     }
+    // the user posted this tweet with his persian name, id, img
     .posterProfile {
         display: flex;
         flex-direction: row;
+        // tweet user persian name
         .posterPersianName {
             margin-right: 1rem;
         }
+        // id of the user that posted the tweet
         .posterID {
             font-size: 0.9rem;
             color: #808080;
@@ -28,15 +32,22 @@
             }
         }
     }
+    // the text part of post
     .postText {
         margin-top: 1rem;
         font-size: .95rem;
+        // all hashtags that are found will have this style (this is the way of finding the changed html tag in css
+        a {
+            text-decoration: none;
+            color: $global-twitter-color;
+        }
     }
-
+    // post like and retweet button container
     .postStuffContainer {
         display: flex;
         flex-direction: row-reverse;
         margin-top: 15px;
+        // post retweet btn
         .reTweetButton {
             max-width: 35px;
             max-height: 33px;
@@ -48,10 +59,12 @@
             margin-left: 1rem;
             align-items: center;
             justify-content: center;
+            // retweet icon
             .reTweetIcon {
                 font-size: 16px;
             }
         }
+        // post like btn
         .likeButton {
             max-width: 35px;
             max-height: 32px;
@@ -63,10 +76,12 @@
             margin-left: 1rem;
             align-items: center;
             justify-content: center;
+            // like icon
             .likeIcon {
                 font-size: 16px;
             }
         }
+        // like num
         .likeNumber {
             color: gray;
             padding: 7px 10px;

@@ -8,10 +8,10 @@ function Posts() {
         "آموزش دانشجويان خلباني نظامي در سه مرحله مقدماتي، پايه و پيشرفته انجام مي شود و پس از آن وارد مراحل بعدي يعني ورود به جنگنده، جنگنده پيشرفته و اسکادران آموزشي مي گردند. در کشورمان به دليل عدم وجود هواپيماي جت آموزشي پيشرفته، دانشجو پس از طي دوره #پايه بلافاصله وارد #مرحله_چهارم (ورود به جنگنده) مي شود."
     ]
 
+    /* TODO the href will be replaced by $& */ 
     // will find the hashtags and make the to a link and tweeter colored
     const CheckForHashTag = (text) => {
         return text[0].replace(/#\S+/g, // for more information about regex js visit w3school
-        {/* TODO the href will be replaced by $& */}
             `<a 
         href='../../pages/TweetsByHashTag/TweetByHashTag'>
         $&

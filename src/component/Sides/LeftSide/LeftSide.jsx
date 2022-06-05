@@ -27,7 +27,7 @@ function LeftSide() {
                 </h3>
                 <div className="divider"></div>
 
-                <a href="#">
+                <a href="/users/khodee">
                     <button className='bestTwittersButton'>
                         <div className="twitters">
                             {/* <img className='bestTwittersImg' src="" alt="" /> */}

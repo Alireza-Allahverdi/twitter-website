@@ -7,12 +7,12 @@ import { useParams } from 'react-router';
 
 function TweetByHashTag() {
 
-    const {hashtag} = useParams()
-
+    const { hashtag } = useParams(); // will give access to params of the route path ( mu know and include the params name in this example it is hashtag )
+    // const param = useParams() // if this one is used most include the params name aswell for example in this project it is param.hashtag
 
     return (
-        <div className='mainSide'>
-            <Header tittle={hashtag} icon={<FontAwesomeIcon icon={faHashtag} />} />
+        <div className='mainSide'> {/* this class must be given to the page so that it will have the same styles */}
+            <Header tittle={hashtag} icon={<FontAwesomeIcon icon={faHashtag} />} /> {/* header that will get the icon and tittle as the props and displays them */}
             <PostsList />
         </div>
     )

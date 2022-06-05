@@ -3,11 +3,16 @@ import Header from '../../component/Header/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag } from '@fortawesome/free-solid-svg-icons';
 import PostsList from '../../component/Posts/PostsList';
+import { useParams } from 'react-router';
 
 function TweetByHashTag() {
+
+    const {hashtag} = useParams()
+
+
     return (
-        <div>
-            <Header tittle={'ویروسی به نام ترنم'} icon={<FontAwesomeIcon icon={faHashtag}/>} />
+        <div className='mainSide'>
+            <Header tittle={hashtag} icon={<FontAwesomeIcon icon={faHashtag} />} />
             <PostsList />
         </div>
     )

@@ -16,8 +16,10 @@ function App() {
             <RightSide />
             <hr />
             <Routes>
-                <Route exact path={'/'} element={<Home />} />
-                <Route  path={'/'} element={<Error404 />} />
+                <Route path={'/'} element={<Home />} />
+                <Route path={'hashtags/:hashtag'} element={<TweetByHashTag />} />
+                <Route path={'users/:user'} element={<TweetByUser />} />
+                <Route path={'*'} element={<Error404 />} />
             </Routes>
 
             {/* <TweetByHashTag /> */}

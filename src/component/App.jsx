@@ -4,6 +4,8 @@ import LeftSide from './Sides/LeftSide/LeftSide';
 import '../asset/App.scss';
 import TweetByHashTag from '../pages/TweetsByHashTag/TweetByHashTag';
 import TweetByUser from '../pages/TweetByUser/TweetByUser';
+import { Route, Routes } from 'react-router-dom';
+import Error404 from '../pages/P404/Page404';
 
 function App() {
 
@@ -11,21 +13,17 @@ function App() {
     return (
 
         <div className="app">
-            <div className='rightSide'>
-                <RightSide /> 
-            </div>
+            <RightSide />
             <hr />
-            <div className='mainSide'>
-                <Home />
-                {/* <TweetByHashTag /> */}
-                {/* <TweetByUser /> */}
-            </div>
+            <Routes>
+                <Route exact path={'/'} element={<Home />} />
+                <Route  path={'/'} element={<Error404 />} />
+            </Routes>
+
+            {/* <TweetByHashTag /> */}
+            {/* <TweetByUser /> */}
             <hr />
-            <div className='leftSide'>
-                <LeftSide />
-            </div>
-
-
+            <LeftSide />
         </div>
     );
 }

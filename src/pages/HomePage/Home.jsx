@@ -9,7 +9,7 @@ import { faHome } from '@fortawesome/free-solid-svg-icons';
 function Home() {
 
   return (
-    <div> 
+    <div className='mainSide'> 
       <Header tittle={'خانه'} icon={<FontAwesomeIcon icon={faHome}/>}/>
       <NewTweetSlot />
       <PostsList />

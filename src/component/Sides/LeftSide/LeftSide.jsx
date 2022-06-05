@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function LeftSide() {
     return (
-        <div>
+        <div className='leftSide'>
             <div className="userInfo">
                 {/* <img className='userImg' src="" alt="" /> */}
                 <span>

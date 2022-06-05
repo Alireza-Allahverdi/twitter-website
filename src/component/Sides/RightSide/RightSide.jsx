@@ -7,7 +7,7 @@ import { faHashtag } from '@fortawesome/free-solid-svg-icons';
 function RightSide() {
 
     return (
-        <div >
+        <div className='rightSide'>
 
             <div className="twitterTitle">
                 <span className='icon'>

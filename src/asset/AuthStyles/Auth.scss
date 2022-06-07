@@ -1,0 +1,43 @@
+.authPageContainer {
+    display: flex;
+    font-family: $global-font-family;
+    background-color: #e6e6e6;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30rem;
+    background-color: white;
+    border-radius: 1rem;
+    h2 {
+        color: $global-twitter-color;
+    }
+    .tabNav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0;
+        background-color: #e6e6e6;
+        li {
+            list-style-type: none;
+            color: black;
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+            font-size: large;
+            font-weight: 500;
+            &:hover {
+                background-color: #3a99dd;
+            }
+        }
+    
+    }
+
+}

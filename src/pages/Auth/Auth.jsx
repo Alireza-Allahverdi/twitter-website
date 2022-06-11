@@ -12,17 +12,17 @@ function Auth() {
         <div className='authPageContainer'>
             <div className="tabs"> {/* container of tabs and the welcome message */}
                 <h2>خوش آمدید</h2>
-                <h3>
+                <h4>
                     {
                         `برای ${tabState.log ? "ورود" : "ثبت نام"} اطلاعات خود را تکمیل کنید`
                     }
-                </h3>
+                </h4>
                 <ul className="tabNav">
                     <li
                         className="loginTab"
                         style={
                             {
-                                backgroundColor: tabState.log ? "#3a99dd" : "initial"
+                                backgroundColor: tabState.log ? "#3a99dd" : ""
                             }
                         }
                         onClick={() => {
@@ -40,7 +40,7 @@ function Auth() {
                     <li className="registerTab"
                         style={
                             {
-                                backgroundColor: tabState.reg ? "#3a99dd" : "initial"
+                                backgroundColor: tabState.reg ? "#3a99dd" : ""
                             }
                         }
                         onClick={() => {

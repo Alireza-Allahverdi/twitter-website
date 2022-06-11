@@ -1,20 +1,69 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Login from './Login'
+import Register from './Register'
 
 function Auth() {
+
+    const [tabState, setTabState] = useState({
+        log: true,
+    })
+
     return (
         <div className='authPageContainer'>
-            <div className="tabs">
+            <div className="tabs"> {/* container of tabs and the welcome message */}
                 <h2>خوش آمدید</h2>
+                <h3>
+                    {
+                        `برای ${tabState.log ? "ورود" : "ثبت نام"} اطلاعات خود را تکمیل کنید`
+                    }
+                </h3>
                 <ul className="tabNav">
-                    <li className="loginTab">
+                    <li
+                        className="loginTab"
+                        style={
+                            {
+                                backgroundColor: tabState.log ? "#3a99dd" : "initial"
+                            }
+                        }
+                        onClick={() => {
+                            if (tabState.log) {
+                                return
+                            }
+                            setTabState({
+                                log: true,
+                                reg: false
+                            })
+                        }}
+                    >
                         ورود
                     </li>
-                    <li className="registerTab">
+                    <li className="registerTab"
+                        style={
+                            {
+                                backgroundColor: tabState.reg ? "#3a99dd" : "initial"
+                            }
+                        }
+                        onClick={() => {
+                            if (tabState.reg) {
+                                return
+                            }
+                            setTabState({
+                                log: false,
+                                reg: true
+                            })
+                        }}
+                    >
                         ثبت نام
                     </li>
                 </ul>
             </div>
-            <div className="outlet"></div>
+            <div className="outlet"> {/*each tab content */}
+                {
+                    tabState.log ?
+                        <Login />
+                        : <Register />
+                }
+            </div>
         </div>
     )
 }

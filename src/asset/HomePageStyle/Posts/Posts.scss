@@ -52,13 +52,16 @@
             max-width: 35px;
             max-height: 33px;
             cursor: pointer;
-            color: $global-twitter-color;
+            color: #a8a8a8;
             background-color: white;
             border-radius: 50%;
             border: 0.5px solid gray;
             margin-left: 1rem;
             align-items: center;
             justify-content: center;
+            &:hover {
+                color: $global-twitter-color;
+            }
             // retweet icon
             .reTweetIcon {
                 font-size: 16px;
@@ -69,13 +72,16 @@
             max-width: 35px;
             max-height: 32px;
             cursor: pointer;
-            color: red;
+            color: #a8a8a8;
             background-color: white;
             border-radius: 50%;
             border: 0.5px solid gray;
             margin-left: 1rem;
             align-items: center;
             justify-content: center;
+            &:hover {
+                color: red;
+            }
             // like icon
             .likeIcon {
                 font-size: 16px;

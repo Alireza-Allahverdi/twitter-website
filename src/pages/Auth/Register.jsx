@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { RegisterApi } from '../../api/auth-api';
 import { validateRegexPassword } from './Regex'
 
 function Register() {
@@ -13,9 +14,11 @@ function Register() {
     })
     const err = 'این فیلد نباید خالی باشد'
     const [check, setCheck] = useState(false)
+    const [reqErrState, setReqErrState] = useState(false)
+    const [reqErrContent, setErrContent] = useState()
 
     const ValidateAndAccept = () => {
-        if (!state.name || !state.userName || !state.password) {
+        if (!state.name || !state.userName || !state.password || !state.rePassword) {
             return 
         }
         if (!validateRegexPassword.test(state.password)) {
@@ -32,12 +35,34 @@ function Register() {
     }
 
     const SubmitReq = () => {
-
+        let userInfo = {
+            name: state.name,
+            username: state.userName,
+            password: state.password
+        }
+        RegisterApi(userInfo, (isOk, data) => {
+            if (!isOk) {
+                setReqErrState(true)
+                setErrContent(data)
+            }
+            setReqErrState(false)
+            alert('حله حاجی ثبت نام شدی')
+            localStorage.setItem("name", data.name)
+            localStorage.setItem("username", data.username)
+            localStorage.setItem("imgae", data.image)
+            localStorage.setItem("x-auth-token", data["x-auth-token"])
+        })
     }
 
     return (
         <div className='form'>
             {/* TODO complete state management for this file */}
+            <p className="emptinessErr">
+                {
+                    reqErrState &&
+                    reqErrContent
+                }
+            </p>
             <label htmlFor="fullname">
                 نام کامل
             </label>

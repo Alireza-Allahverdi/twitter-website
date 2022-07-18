@@ -12,3 +12,16 @@ export const LoginApi = (user, callback) => {
             callback(false, err.response.data.message)
         })
 }
+
+export const RegisterApi = (user, callback) => {
+    axios
+        .post("/api/register",user)
+        .then((res) => {
+            let data =  res.data
+            callback(true, data)
+        })
+        .catch((err) => {
+            console.error(err)
+            callback(false, err.response.data.message)
+        })
+}

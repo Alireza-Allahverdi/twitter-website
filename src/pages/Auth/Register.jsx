@@ -46,7 +46,6 @@ function Register() {
                 setErrContent(data)
             }
             setReqErrState(false)
-            alert('حله حاجی ثبت نام شدی')
             localStorage.setItem("name", data.name)
             localStorage.setItem("username", data.username)
             localStorage.setItem("imgae", data.image)

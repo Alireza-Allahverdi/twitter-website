@@ -38,7 +38,6 @@ function Login() {
                 return
             }
             setReqErrState(false)
-            alert('شما با موفقیت وارد شدید')
             localStorage.setItem("name",data.name)
             localStorage.setItem("image",data.image)
             localStorage.setItem("username",data.username)

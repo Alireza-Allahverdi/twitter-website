@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { validateRegexPassword } from './Regex'
+import React, { useState } from 'react'
 
 function Login() {
 
@@ -7,13 +6,24 @@ function Login() {
         username: '',
         password: ''
     })
+    const [check, setCheck] = useState(false)
+    const err = "این فیلد نباید خالی باشد"
 
-    const ValidateAndAccept = () => {
-        if (!field.username && !field.password) return alert('fileds empty')
-        return Loginer()
+    const OnChangeHandler = (e) => {
+        setField({
+            ...field,
+            [e.target.name]: e.target.value
+        })
     }
 
-    const Loginer = () => {
+    const ValidateAndAccept = () => {
+        if (!field.username || !field.password) {
+            return
+        } 
+        SubmitReq()
+    }
+
+    const SubmitReq = () => {
         alert('all set')
     }
 
@@ -25,26 +35,46 @@ function Login() {
             </label>
             <input
                 type="text"
+                name="username"
+                value={field.username}
                 onChange={(e) => {
-                    setField({
-                        ...field,
-                        username: e.target.value
-                    })
+                    setCheck(false)
+                    OnChangeHandler(e)
                 }}
             />
+            <p className='emptinessErr'>
+                {
+                    check &&
+                        !field.username
+                        ? err
+                        : ''
+                }
+            </p>
             <label htmlFor="password">
                 کلمه عبور
             </label>
             <input
+                className='password'
                 type="password"
+                name="password"
+                value={field.password}
                 onChange={(e) => {
-                    setField({
-                        ...field,
-                        password: e.target.value
-                    })
+                    setCheck(false)
+                    OnChangeHandler(e)
                 }}
             />
-            <button className="loginBtn" onClick={ValidateAndAccept}>
+            <p className='emptinessErr'>
+                {
+                    check &&
+                        !field.password
+                        ? err
+                        : ''
+                }
+            </p>
+            <button className="loginBtn" onClick={() => {
+                setCheck(true)
+                ValidateAndAccept()
+            }}>
                 ورود
             </button>
         </div>

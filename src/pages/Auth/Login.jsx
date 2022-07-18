@@ -43,6 +43,7 @@ function Login() {
             localStorage.setItem("image",data.image)
             localStorage.setItem("username",data.username)
             localStorage.setItem("x-auth-token",data["x-auth-token"])
+            window.location.reload()
         })
     }
 

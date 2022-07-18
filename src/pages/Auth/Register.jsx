@@ -51,6 +51,7 @@ function Register() {
             localStorage.setItem("username", data.username)
             localStorage.setItem("imgae", data.image)
             localStorage.setItem("x-auth-token", data["x-auth-token"])
+            window.location.reload()
         })
     }
 

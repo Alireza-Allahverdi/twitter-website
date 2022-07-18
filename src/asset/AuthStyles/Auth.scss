@@ -80,6 +80,8 @@
             font-size: 1rem;
             font-family: $global-font-family;
             transition: border .2s ease-in;
+            direction: ltr;
+            text-align: left;
             &:hover {
                 border-color: #3a99dd;
             }
@@ -90,6 +92,9 @@
             &:invalid {
                 border-color: red;
             }
+        }
+        .emptinessErr {
+            color: red;
         }
         p {
             font-size: .8rem;

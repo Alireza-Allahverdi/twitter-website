@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { LoginApi } from '../../api/auth-api'
 
 function Login() {
 
@@ -8,6 +9,8 @@ function Login() {
     })
     const [check, setCheck] = useState(false)
     const err = "این فیلد نباید خالی باشد"
+    const [reqErrState, setReqErrState] = useState(false)
+    const [reqErrContent, setErrContent] = useState()
 
     const OnChangeHandler = (e) => {
         setField({
@@ -24,12 +27,34 @@ function Login() {
     }
 
     const SubmitReq = () => {
-        alert('all set')
+        let user = {
+            username: field.username,
+            password: field.password
+        }
+        LoginApi(user, (isOk, data) => {
+            if (!isOk) {
+                setReqErrState(true)
+                setErrContent(data)
+                return
+            }
+            setReqErrState(false)
+            alert('شما با موفقیت وارد شدید')
+            localStorage.setItem("name",data.name)
+            localStorage.setItem("image",data.image)
+            localStorage.setItem("username",data.username)
+            localStorage.setItem("x-auth-token",data["x-auth-token"])
+        })
     }
 
     return (
         <div className="form">
             {/* TODO complete state management for this file */}
+            <p className='emptinessErr'>
+                {
+                    reqErrState &&
+                    reqErrContent
+                }
+            </p>
             <label htmlFor="username">
                 نام کاربری
             </label>
@@ -38,6 +63,7 @@ function Login() {
                 name="username"
                 value={field.username}
                 onChange={(e) => {
+                    setReqErrState(false)
                     setCheck(false)
                     OnChangeHandler(e)
                 }}
@@ -59,6 +85,7 @@ function Login() {
                 name="password"
                 value={field.password}
                 onChange={(e) => {
+                    setReqErrState(false)
                     setCheck(false)
                     OnChangeHandler(e)
                 }}

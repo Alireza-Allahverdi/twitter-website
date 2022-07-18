@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { faHashtag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowAltCircleRight, faWindowRestore } from '@fortawesome/free-regular-svg-icons';
 
 
 function LeftSide() {
+
+    const [dropdownState, setDropdownState] = useState(false)
+
     return (
         <div className='leftSide'>
-            <div className="userInfo">
+            <div
+                className="userInfo"
+                onClick={() => {
+                    setDropdownState(!dropdownState)
+                }}
+            >
                 {/* <img className='userImg' src="" alt="" /> */}
                 <span>
                     <FontAwesomeIcon icon={faHashtag} />
@@ -20,6 +29,32 @@ function LeftSide() {
                     </div>
                 </div>
             </div>
+            {
+                dropdownState &&
+                <div
+                    className="dropdownMenu"
+                    onMouseLeave={() => { setDropdownState(false) }}
+                >
+                    {/* TODO complete progfile page */}
+                    <div className="dropdownItem">
+                        <p>
+                            پروفایل
+                        </p>
+                    </div>
+                    <div 
+                    className="dropdownItem"
+                    onClick={() => {
+                        localStorage.clear()
+                        window.location.reload()
+                    }}
+                    >
+                        <p>
+                            خروج
+                        </p>
+                    </div>
+                </div>
+
+            }
 
             <div className="bestTwittersContainer">
                 <h3 className='bestTwitterTittle'>

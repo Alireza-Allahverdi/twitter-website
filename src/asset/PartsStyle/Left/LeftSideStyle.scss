@@ -22,6 +22,28 @@
     }
 }
 
+.dropdownMenu {
+    width: 7%;
+    position: absolute;
+    border-radius: 10px;
+    background-color: #eaeaea;
+    top: 4.4rem;
+    left: 1rem;
+    .dropdownItem {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 100%;
+        transition: background .3s ease-in;
+        &:hover {
+            border-radius: inherit;
+            background-color: rgb(44, 255, 209);
+        }
+    }
+}
+
 .bestTwittersContainer {
     background-color: #f5f8fa;
     margin-top: 2rem;

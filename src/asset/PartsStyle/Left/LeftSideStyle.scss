@@ -9,8 +9,17 @@
 .userInfo {
     display: flex;
     flex-direction: row-reverse;
+    cursor: pointer;
+    img {
+        width: 40px;
+        border-radius: 50%;
+    }
+    i {
+        font-size: 40px;
+    }
     .profileText {
-        flex-direction: column;
+        margin-left: 5px;
+        text-align: end;
         .persianUserName {
             direction: ltr;
         }
@@ -39,7 +48,7 @@
         transition: background .3s ease-in;
         &:hover {
             border-radius: inherit;
-            background-color: rgb(44, 255, 209);
+            background-color: rgb(44, 188, 255);
         }
     }
 }

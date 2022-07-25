@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
-import { faHashtag } from '@fortawesome/free-solid-svg-icons';
+import { faHashtag, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowAltCircleRight, faWindowRestore } from '@fortawesome/free-regular-svg-icons';
-
 
 function LeftSide() {
 
     const [dropdownState, setDropdownState] = useState(false)
+    const [userInfo] = useState({
+        name: !!localStorage.getItem('name') ? localStorage.getItem('name') : "no name",
+        userName: !!localStorage.getItem('username') ? localStorage.getItem('username') : "no username",
+        image: localStorage.getItem('image')
+    })
 
     return (
         <div className='leftSide'>
@@ -16,16 +19,17 @@ function LeftSide() {
                     setDropdownState(!dropdownState)
                 }}
             >
-                {/* <img className='userImg' src="" alt="" /> */}
-                <span>
-                    <FontAwesomeIcon icon={faHashtag} />
-                </span>
+                {
+                    userInfo.image !== "undefined" ?
+                        <img src={userInfo.image} alt="" />
+                        : <FontAwesomeIcon icon={faUser} />
+                }
                 <div className="profileText">
                     <div className='persianUserName'>
-                        علیرضا الهوردی
+                        {userInfo.name}
                     </div>
                     <div className='userID'>
-                        AlirezaAllahverdi20
+                        {userInfo.userName}
                     </div>
                 </div>
             </div>
@@ -41,12 +45,12 @@ function LeftSide() {
                             پروفایل
                         </p>
                     </div>
-                    <div 
-                    className="dropdownItem"
-                    onClick={() => {
-                        localStorage.clear()
-                        window.location.reload()
-                    }}
+                    <div
+                        className="dropdownItem"
+                        onClick={() => {
+                            localStorage.clear()
+                            window.location.reload()
+                        }}
                     >
                         <p>
                             خروج

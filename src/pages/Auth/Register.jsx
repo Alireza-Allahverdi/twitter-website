@@ -50,13 +50,13 @@ function Register() {
             localStorage.setItem("username", data.username)
             localStorage.setItem("imgae", data.image)
             localStorage.setItem("x-auth-token", data["x-auth-token"])
+            localStorage.removeItem('tab')
             window.location.reload()
         })
     }
 
     return (
         <div className='form'>
-            {/* TODO complete state management for this file */}
             <p className="emptinessErr">
                 {
                     reqErrState &&

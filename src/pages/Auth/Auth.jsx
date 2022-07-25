@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Login from './Login'
 import Register from './Register'
 
@@ -6,6 +6,15 @@ function Auth() {
 
     const [tabState, setTabState] = useState({
         log: true,
+    })
+
+    useEffect(() => {
+        if (JSON.parse(localStorage.getItem("tab"))) {
+            setTabState({
+                log:false,
+                reg: true
+            })
+        }
     })
 
     return (
@@ -33,6 +42,7 @@ function Auth() {
                                 log: true,
                                 reg: false
                             })
+                            localStorage.setItem('tab', JSON.stringify(false))
                         }}
                     >
                         ورود
@@ -51,6 +61,7 @@ function Auth() {
                                 log: false,
                                 reg: true
                             })
+                            localStorage.setItem('tab', JSON.stringify(true))
                         }}
                     >
                         ثبت نام

@@ -1,4 +1,4 @@
-import axios from "./api";
+import axios, { AxiosPrivate } from "./api";
 
 export const LoginApi = (user, callback) => {
     axios
@@ -24,4 +24,17 @@ export const RegisterApi = (user, callback) => {
             console.error(err)
             callback(false, err.response.data.message)
         })
+}
+
+export const UploadUserPhoto = (photo, callback) => {
+    AxiosPrivate()
+    .post("uploadUserPhoto",photo)
+    .then((res) => {
+        let photo = res.data
+        callback(true, photo)
+    })
+    .catch((err) => {
+        console.error(err)
+        callback(false, err.response.data.message)
+    })
 }

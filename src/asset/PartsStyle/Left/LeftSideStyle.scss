@@ -32,7 +32,7 @@
 }
 
 .dropdownMenu {
-    width: 7%;
+    width: auto;
     position: absolute;
     border-radius: 10px;
     background-color: #eaeaea;
@@ -47,8 +47,15 @@
         width: 100%;
         transition: background .3s ease-in;
         &:hover {
-            border-radius: inherit;
             background-color: rgb(44, 188, 255);
+        }
+        &:hover:nth-child(1){
+            border-top-right-radius: inherit;
+            border-top-left-radius: inherit;
+        }
+        &:hover:nth-child(3){
+            border-bottom-right-radius: inherit;
+            border-bottom-left-radius: inherit;
         }
     }
 }

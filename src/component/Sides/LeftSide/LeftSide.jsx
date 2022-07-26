@@ -6,8 +6,8 @@ function LeftSide() {
 
     const [dropdownState, setDropdownState] = useState(false)
     const [userInfo] = useState({
-        name: !!localStorage.getItem('name') ? localStorage.getItem('name') : "no name",
-        userName: !!localStorage.getItem('username') ? localStorage.getItem('username') : "no username",
+        name: !!localStorage.getItem('name') ? localStorage.getItem('name') : "no data",
+        userName: !!localStorage.getItem('username') ? localStorage.getItem('username') : "no data",
         image: localStorage.getItem('image')
     })
 
@@ -43,6 +43,11 @@ function LeftSide() {
                     <div className="dropdownItem">
                         <p>
                             پروفایل
+                        </p>
+                    </div>
+                    <div className="dropdownItem">
+                        <p>
+                            آپلود عکس پروفایل
                         </p>
                     </div>
                     <div

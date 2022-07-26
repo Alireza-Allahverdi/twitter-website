@@ -4,9 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function NewTweetSlot() {
 
-    const [tweetField, setTweetField] = useState({
-        tweet: ''
-    })
+    const [tweetField, setTweetField] = useState()
 
     return (
         <div className='newTweet'>
@@ -16,14 +14,12 @@ function NewTweetSlot() {
                     <FontAwesomeIcon icon={faImage} />
                 </span>
                 <textarea
-                    name="tweetPlease"
+                    name="tweet"
                     id="tweetSlot"
                     placeholder='توییت کن...'
                     className='tweetUserTextArea'
                     onChange={(e) => {
-                        setTweetField({
-                            tweet: e.target.value
-                        })
+                        setTweetField(e.target.value)
                     }} />
             </div>
             <div className="tweetButtonsContainer">

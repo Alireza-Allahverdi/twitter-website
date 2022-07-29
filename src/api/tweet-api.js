@@ -12,3 +12,16 @@ export const GetTweets = (callback) => {
         callback(false, err)
     })
 }
+
+export const SendTweet = (data, callback) => {
+    AxiosPrivate()
+    .post("newTweet",data)
+    .then((res) => {
+        let data = res.data
+        callback(true, data)
+    })
+    .catch((err) => {
+        callback(false, err)
+        console.error(err)
+    })
+}

@@ -1,15 +1,36 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { faHashtag, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function LeftSide() {
 
     const [dropdownState, setDropdownState] = useState(false)
-    const [userInfo] = useState({
+    const [userInfo, setUserInfo] = useState({
         name: !!localStorage.getItem('name') ? localStorage.getItem('name') : "no data",
         userName: !!localStorage.getItem('username') ? localStorage.getItem('username') : "no data",
         image: localStorage.getItem('image')
     })
+    const [imageFile, setImageFile] = useState()
+
+    const imageInp = useRef()
+
+    const handleImage = (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+            setImageFile(e.target.files[0])
+        }
+
+        const fileReader = new FileReader()
+        fileReader.onload=(e) => {
+            setUserInfo({
+                ...userInfo,
+                image: e.target.result
+            })
+        }
+        fileReader.readAsDataURL(e.target.files[0])
+    }
+    useEffect(() => {
+        console.log(userInfo);
+    },[userInfo])
 
     return (
         <div className='leftSide'>
@@ -20,6 +41,7 @@ function LeftSide() {
                 }}
             >
                 {
+                    userInfo.image ||
                     userInfo.image !== "undefined" ?
                         <img src={userInfo.image} alt="" />
                         : <FontAwesomeIcon icon={faUser} />
@@ -32,6 +54,12 @@ function LeftSide() {
                         {userInfo.userName}
                     </div>
                 </div>
+                <input 
+                ref={imageInp} 
+                type="file" 
+                style={{display:"none"}}
+                onChange={handleImage}
+                />
             </div>
             {
                 dropdownState &&
@@ -45,7 +73,12 @@ function LeftSide() {
                             پروفایل
                         </p>
                     </div>
-                    <div className="dropdownItem">
+                    <div 
+                    className="dropdownItem"
+                    onClick={() => {
+                        imageInp.current.click()
+                    }}
+                    >
                         <p>
                             آپلود عکس پروفایل
                         </p>

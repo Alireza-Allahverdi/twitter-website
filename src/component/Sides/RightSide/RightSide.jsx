@@ -1,17 +1,25 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faHashtag } from '@fortawesome/free-solid-svg-icons';
+import { GetHashtags } from '../../../api/hashtag-api';
 
 
 function RightSide() {
 
-    const eeeeee = [
-        'پرچم_دار_جدید',
-        'پرچم_دار_قدیم',
-        'پرچم_دار_آینده',
+    const [hashtags, setHashtags] = useState([])
+    const [loader, setLoader] = useState(false)
 
-    ]
+    useEffect(() => {
+        setLoader(true)
+        GetHashtags((isOk, data) => {
+            if (!isOk) {
+                return
+            }
+            setHashtags(data)
+            setLoader(false)
+        })
+    }, [])
 
     return (
         <div className='rightSide'>
@@ -31,24 +39,31 @@ function RightSide() {
             </h2>
 
             {/*this is where the mapping begin :)))*/}
-            {
-                eeeeee.map((item, index) => {
-                    return <Fragment key={index}>
-                        <a href={`/hashtags/${item}`}>
-                            <button className='hashtagButton'>
-                                <div className="hashtagContainer">
-                                    <span className='hashtagIcon'>
-                                        <FontAwesomeIcon className='hashtagSelf' icon={faHashtag} />
-                                    </span>
-                                    <span className='hashtagSubject'>
-                                        {item}
-                                    </span>
-                                </div>
-                            </button>
-                        </a>
-                    </Fragment>
-                })
-            }
+            <div className="hashtagsContainer">
+                {
+                    loader ?
+                        <div className="spinner-container">
+                            <div className="spinner"></div>
+                        </div>
+                        :
+                        hashtags.map((item, index) => {
+                            return <Fragment key={index}>
+                                <a href={`/hashtags/${item.text}`}>
+                                    <button className='hashtagButton'>
+                                        <div className="hashtagContainer">
+                                            <span className='hashtagIcon'>
+                                                <FontAwesomeIcon className='hashtagSelf' icon={faHashtag} />
+                                            </span>
+                                            <span className='hashtagSubject'>
+                                                {item.text}
+                                            </span>
+                                        </div>
+                                    </button>
+                                </a>
+                            </Fragment>
+                        })
+                }
+            </div>
         </div>
     )
 }

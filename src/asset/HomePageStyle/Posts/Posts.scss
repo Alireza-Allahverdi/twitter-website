@@ -43,6 +43,11 @@
             text-decoration: none;
             color: $global-twitter-color;
         }
+        .postsImage {
+            margin-top: 1rem;
+            width: 100%;
+            height: 100%;
+        }
     }
     // post like and retweet button container
     .postStuffContainer {

@@ -2,18 +2,14 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faImage, faRetweet } from '@fortawesome/free-solid-svg-icons'
 
-function Posts() {
+function Posts(props) {
 
-    const text = [
-        "آموزش دانشجويان خلباني نظامي در سه مرحله مقدماتي، پايه و پيشرفته انجام مي شود و پس از آن وارد مراحل بعدي يعني ورود به جنگنده، جنگنده پيشرفته و اسکادران آموزشي مي گردند. در کشورمان به دليل عدم وجود هواپيماي جت آموزشي پيشرفته، دانشجو پس از طي دوره #پايه بلافاصله وارد #مرحله_چهارم (ورود به جنگنده) مي شود."
-    ]
-
-    /* TODO the href will be replaced by $& */ 
+    /* TODO the href will be replaced by $& */
     // will find the hashtags and make the to a link and tweeter colored
     const CheckForHashTag = (text) => {
-        return text[0].replace(/#\S+/g, // for more information about regex js visit w3school
+        return text.replace(/#\S+/g, // for more information about regex js visit w3school
             `<a 
-        href='../../pages/TweetsByHashTag/TweetByHashTag'>
+        href='/hashtags/$&'>
         $&
         </a>`)
         // the $& will return innerhtml of whatever was found by the regex => for .exp if #hello is found, it will return #hello
@@ -22,20 +18,24 @@ function Posts() {
     return (
         <div className='post'>        {/* container of all posts  */}
             <div className="posterProfile"> {/* post tweeters name, id,img */}
-                {/* <img className='posterImg' src="" alt="" /> */}
                 <span className='temporarily'> {/* a temporairly used icon instead of img */}
-                    <FontAwesomeIcon icon={faImage} />
+                    {
+                        props.tweetInfo.user.image ?
+                            <img className='posterImg' src={props.tweetInfo.user.image} alt="" />
+                            : <FontAwesomeIcon icon={faImage} />
+
+                    }
                 </span>
                 <span className="posterPersianName">
-                    علیرضا الهوردی
+                    {props.tweetInfo.user.name}
                 </span>
                 <span className="posterID">
-                    AlirezaAllahverdi20
+                    {props.tweetInfo.user.username}
                 </span>
             </div>
             <div className="postText"> {/* post text container */}
                 {/* post text that will be checked of all the hashtags init */}
-                <span dangerouslySetInnerHTML={{ __html: CheckForHashTag(text) }}>
+                <span dangerouslySetInnerHTML={{ __html: CheckForHashTag(props.tweetInfo.text) }}>
                 </span>
             </div>
             <div className="postStuffContainer"> {/* post retweet and like btn container */}
@@ -45,7 +45,7 @@ function Posts() {
                 <button className="likeButton"> {/* tweet like btn */}
                     <FontAwesomeIcon icon={faHeart} className='likeIcon' />
                 </button>
-                <span className="likeNumber">1560</span> {/* tweet like counter */}
+                <span className="likeNumber">{props.tweetInfo.likes}</span> {/* tweet like counter */}
             </div>
         </div>
     )

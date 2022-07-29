@@ -2,8 +2,33 @@
     font-family: $global-font-family;
     padding: 1.7rem 1rem;
     flex-grow: 1;
-    flex: .22;
+    flex: 0.22;
     max-width: 22%;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #383636; /* Black */
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
 }
 
 .userInfo {
@@ -46,15 +71,15 @@
         justify-content: center;
         height: 40px;
         width: 100%;
-        transition: background .3s ease-in;
+        transition: background 0.3s ease-in;
         &:hover {
             background-color: rgb(44, 188, 255);
         }
-        &:hover:nth-child(1){
+        &:hover:nth-child(1) {
             border-top-right-radius: inherit;
             border-top-left-radius: inherit;
         }
-        &:hover:nth-child(3){
+        &:hover:nth-child(3) {
             border-bottom-right-radius: inherit;
             border-bottom-left-radius: inherit;
         }

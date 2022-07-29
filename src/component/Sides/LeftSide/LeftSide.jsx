@@ -56,7 +56,9 @@ function LeftSide() {
             >
                 {
                     loader ?
-                    <span>loading</span>
+                    <div className="spinner-container">
+                        <div className="spinner"></div>
+                    </div>
                     :
                     userInfo.image ||
                     userInfo.image !== "undefined" ?

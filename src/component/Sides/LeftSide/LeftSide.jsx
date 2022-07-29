@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { faHashtag, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { UploadUserPhoto } from '../../../api/auth-api';
 
 function LeftSide() {
 
@@ -11,6 +12,7 @@ function LeftSide() {
         image: localStorage.getItem('image')
     })
     const [imageFile, setImageFile] = useState()
+    const [loader, setLoader] = useState(false)
 
     const imageInp = useRef()
 
@@ -20,17 +22,29 @@ function LeftSide() {
         }
 
         const fileReader = new FileReader()
-        fileReader.onload=(e) => {
+        fileReader.onload = (e) => {
             setUserInfo({
                 ...userInfo,
                 image: e.target.result
             })
         }
         fileReader.readAsDataURL(e.target.files[0])
+
+        const formData = new FormData()
+        formData.append("image", e.target.files[0])
+        setLoader(true)
+        UploadUserPhoto(formData, (isOk, data) => {
+            if (!isOk) {
+                return alert(data)
+            }
+            alert('all set')
+            setLoader(false)
+            localStorage.setItem("image", data.imagePath)
+        })
     }
     useEffect(() => {
         console.log(userInfo);
-    },[userInfo])
+    }, [userInfo])
 
     return (
         <div className='leftSide'>
@@ -41,10 +55,14 @@ function LeftSide() {
                 }}
             >
                 {
+                    loader ?
+                    <span>loading</span>
+                    :
                     userInfo.image ||
                     userInfo.image !== "undefined" ?
-                        <img src={userInfo.image} alt="" />
-                        : <FontAwesomeIcon icon={faUser} />
+                    <img src={userInfo.image} alt="" />
+                    : <FontAwesomeIcon icon={faUser} />
+
                 }
                 <div className="profileText">
                     <div className='persianUserName'>
@@ -54,11 +72,11 @@ function LeftSide() {
                         {userInfo.userName}
                     </div>
                 </div>
-                <input 
-                ref={imageInp} 
-                type="file" 
-                style={{display:"none"}}
-                onChange={handleImage}
+                <input
+                    ref={imageInp}
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={handleImage}
                 />
             </div>
             {
@@ -73,11 +91,11 @@ function LeftSide() {
                             پروفایل
                         </p>
                     </div>
-                    <div 
-                    className="dropdownItem"
-                    onClick={() => {
-                        imageInp.current.click()
-                    }}
+                    <div
+                        className="dropdownItem"
+                        onClick={() => {
+                            imageInp.current.click()
+                        }}
                     >
                         <p>
                             آپلود عکس پروفایل

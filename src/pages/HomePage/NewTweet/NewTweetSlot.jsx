@@ -1,17 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import { faImage } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { SendTweet } from '../../../api/tweet-api'
 
 function NewTweetSlot() {
 
     const [tweetField, setTweetField] = useState()
 
+    const PostText = () => {
+        const data = {
+            text: tweetField
+        }
+
+        SendTweet(data, (isOk, data) => {
+            if (!isOk) {
+                return alert(data)
+            }
+            window.location.reload()
+        })
+    }
+
     return (
         <div className='newTweet'>
             <div className="tweetContainer">
-                {/* <img src="" alt="" className='tweetUserImg' /> */}
                 <span>
-                    <FontAwesomeIcon icon={faImage} />
+                    {
+                        localStorage.getItem("image") ?
+                            <img src={localStorage.getItem("image")} alt="" className='tweetUserImg' />
+                            :
+                            <FontAwesomeIcon icon={faImage} />
+                    }
                 </span>
                 <textarea
                     name="tweet"
@@ -23,7 +41,12 @@ function NewTweetSlot() {
                     }} />
             </div>
             <div className="tweetButtonsContainer">
-                <button className='TweetButton'>
+                <button 
+                className='TweetButton'
+                onClick={() => {
+                    PostText()
+                }}
+                >
                     توییت
                 </button>
                 <button className="imgTweetButton">

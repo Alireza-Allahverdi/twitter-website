@@ -8,7 +8,9 @@
         display: flex;
         flex-direction: row;
         .tweetUserImg {
-            width: max-content;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
         }
         .tweetUserTextArea {
             font-family: $global-font-family;

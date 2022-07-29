@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Posts from './Posts'
 
-function PostsList() {
+function PostsList(props) {
     return (
         <div>
-            <Posts />
-            <Posts />
-            <Posts />
-            <Posts />
-            <Posts />
-            <Posts />
+            {
+                props.data.map((item, index) => {
+                    return <Fragment key={index}>
+                        <Posts tweetInfo={item}/>
+                    </Fragment>
+                })
+            }
         </div>
     )
 }

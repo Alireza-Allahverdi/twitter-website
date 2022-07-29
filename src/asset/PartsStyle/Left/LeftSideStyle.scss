@@ -92,6 +92,8 @@
     margin-top: 2rem;
     border-radius: 2rem;
     padding: 11px 24px;
+    height: 400px;
+    overflow-y: auto;
     .bestTwitterTittle {
         font-size: 1.25rem;
         margin-bottom: 15px;
@@ -112,6 +114,13 @@
         .twitters {
             display: flex;
             padding: 10px 0;
+            .bestTwittersImg {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                font-size: 35px;
+                color: $global-twitter-color;
+            }
             .twitterProfileText {
                 width: max-content;
                 margin-right: 0.5rem;

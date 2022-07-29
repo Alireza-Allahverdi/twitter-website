@@ -9,7 +9,7 @@ function Posts(props) {
     const CheckForHashTag = (text) => {
         return text.replace(/#\S+/g, // for more information about regex js visit w3school
             `<a 
-        href='/hashtags/$&'>
+        href='/hashtags/:$&'>
         $&
         </a>`)
         // the $& will return innerhtml of whatever was found by the regex => for .exp if #hello is found, it will return #hello
@@ -37,6 +37,11 @@ function Posts(props) {
                 {/* post text that will be checked of all the hashtags init */}
                 <span dangerouslySetInnerHTML={{ __html: CheckForHashTag(props.tweetInfo.text) }}>
                 </span>
+                {
+                    props.tweetInfo.image ?
+                    <img className='postsImage' src={props.tweetInfo.image} alt="" />
+                    : ''
+                }
             </div>
             <div className="postStuffContainer"> {/* post retweet and like btn container */}
                 <button className='reTweetButton'> {/* tweet retweet btn */}

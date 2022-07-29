@@ -25,6 +25,10 @@ a {
         margin-left: 21px;
     }
 }
+.hashtagsContainer{
+    height: 400px;
+    overflow-y: auto;
+}
 
 .hashtagTittle {
     font-size: 1.25rem;
@@ -40,6 +44,7 @@ a {
     background-color: white;
     font-family: $global-font-family;
     margin-bottom: 0.8rem;
+    width: 100%;
     .hashtagContainer {
         display: flex;
         .hashtagIcon {

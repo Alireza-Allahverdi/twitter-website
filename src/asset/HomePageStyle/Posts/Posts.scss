@@ -5,7 +5,7 @@
     flex-direction: column;
     padding: 20px;
     background-color: white;
-    margin-top: 7px;
+    margin: 7px 0px;
     flex: 1;
     
     .posterImg {
@@ -38,6 +38,8 @@
     .postText {
         margin-top: 1rem;
         font-size: .95rem;
+        text-align: start;
+        line-height: 1.5rem;
         // all hashtags that are found will have this style (this is the way of finding the changed html tag in css
         a {
             text-decoration: none;

@@ -48,7 +48,7 @@ function Register() {
             setReqErrState(false)
             localStorage.setItem("name", data.name)
             localStorage.setItem("username", data.username)
-            localStorage.setItem("imgae", data.image)
+            localStorage.setItem("image", data.image)
             localStorage.setItem("x-auth-token", data["x-auth-token"])
             localStorage.removeItem('tab')
             window.location.reload()

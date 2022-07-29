@@ -15,7 +15,7 @@ function Auth() {
                 reg: true
             })
         }
-    })
+    },[])
 
     return (
         <div className='authPageContainer'>

@@ -8,7 +8,7 @@ export default axios.create({
 })
 
 export const AxiosPrivate = () => {
-    axios.create({
+    return axios.create({
         baseURL: "https://twitterapi.liara.run/api/",
         headers: {
             "x-auth-token": localStorage.getItem("x-auth-token")

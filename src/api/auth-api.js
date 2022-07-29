@@ -30,8 +30,8 @@ export const UploadUserPhoto = (photo, callback) => {
     AxiosPrivate()
     .post("uploadUserPhoto",photo)
     .then((res) => {
-        let photo = res.data
-        callback(true, photo)
+        let data = res.data
+        callback(true, data)
     })
     .catch((err) => {
         console.error(err)

@@ -37,7 +37,7 @@ function LeftSide() {
             if (!isOk) {
                 return alert(data)
             }
-            alert('all set')
+            alert('عکس پروفایل تغییر کرد')
             setLoader(false)
             localStorage.setItem("image", data.imagePath)
         })

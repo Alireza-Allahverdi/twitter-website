@@ -105,7 +105,10 @@
         margin-bottom: 15px;
     }
     ::-webkit-scrollbar {
-        width: 3px;
+        width: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: orange;
     }
     .tweetersAll {
         overflow-y: auto;
@@ -119,22 +122,23 @@
         text-align: right;
         .twitters {
             display: flex;
-            padding: 10px 0;
+            padding: 5px 0;
             .bestTwittersImg {
-                width: 50px;
-                height: 50px;
+                width: 40px;
+                height: 40px;
                 border-radius: 50%;
-                font-size: 35px;
+                font-size: 30px;
                 color: $global-twitter-color;
             }
             .twitterProfileText {
                 width: max-content;
                 margin-right: 0.5rem;
+                margin-top: 4px;
                 .twitterPersianName {
-                    font-size: 1rem;
+                    font-size: 0.85rem;
                 }
                 .twitterID {
-                    font-size: 0.9rem;
+                    font-size: 0.8rem;
                     color: #808080;
                     margin-top: 2px;
                 }

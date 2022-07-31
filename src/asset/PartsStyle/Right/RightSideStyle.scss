@@ -28,6 +28,12 @@ a {
 .hashtagsContainer{
     height: 400px;
     overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: black;
+    }
 }
 
 .hashtagTittle {
@@ -51,8 +57,8 @@ a {
             align-items: center;
             border: 3px solid black;
             border-radius: 12px;
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             font-size: 20px;
             .hashtagSelf {
                 margin-top: 5px;
@@ -60,13 +66,13 @@ a {
         }
         .hashtagSubject {
             margin: {
-                top: 0.4rem;
+                top: 0.5rem;
                 right: 0.8rem;
             }
-            font-size: large;
+            font-size: 1rem;
         }
     }
     .hashtagSubject:hover {
-        color: blue;
+        color: rgb(0, 179, 255);
     }
 }

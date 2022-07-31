@@ -22,14 +22,17 @@
         flex-direction: row;
         // tweet user persian name
         .posterPersianName {
-            margin-right: 1rem;
+            margin: {
+                top: .9rem;
+                right: 1rem
+            };
         }
         // id of the user that posted the tweet
         .posterID {
             font-size: 0.9rem;
             color: #808080;
             margin: {
-                top: 0.1rem;
+                top: 1rem;
                 right: 0.5rem;
             }
         }

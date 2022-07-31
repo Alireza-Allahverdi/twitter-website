@@ -1,8 +1,11 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faImage, faRetweet } from '@fortawesome/free-solid-svg-icons'
+import { setTweetText, useTweetDispatch } from '../../context/TweetContext'
 
 function Posts(props) {
+
+    const tweetDispatch = useTweetDispatch()
 
     /* TODO the href will be replaced by $& */
     // will find the hashtags and make the to a link and tweeter colored
@@ -13,6 +16,9 @@ function Posts(props) {
         $&
         </a>`)
         // the $& will return innerhtml of whatever was found by the regex => for .exp if #hello is found, it will return #hello
+    }
+    const handleRetweetClick = () => {
+        setTweetText(tweetDispatch, props.tweetInfo.text)
     }
 
     return (
@@ -39,12 +45,12 @@ function Posts(props) {
                 </span>
                 {
                     props.tweetInfo.image ?
-                    <img className='postsImage' src={props.tweetInfo.image} alt="" />
-                    : ''
+                        <img className='postsImage' src={props.tweetInfo.image} alt="" />
+                        : ''
                 }
             </div>
             <div className="postStuffContainer"> {/* post retweet and like btn container */}
-                <button className='reTweetButton'> {/* tweet retweet btn */}
+                <button className='reTweetButton' onClick={handleRetweetClick}> {/* tweet retweet btn */}
                     <FontAwesomeIcon icon={faRetweet} className='reTweetIcon' />
                 </button>
                 <button className="likeButton"> {/* tweet like btn */}

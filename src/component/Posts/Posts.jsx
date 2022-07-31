@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faImage, faRetweet } from '@fortawesome/free-solid-svg-icons'
-import { setTweetText, useTweetDispatch } from '../../context/TweetContext'
+import { likeTweet, setTweetText, useTweetDispatch } from '../../context/TweetContext'
 
 function Posts(props) {
 
@@ -19,6 +19,9 @@ function Posts(props) {
     }
     const handleRetweetClick = () => {
         setTweetText(tweetDispatch, props.tweetInfo.text)
+    }
+    const handleLike = () => {
+        likeTweet(tweetDispatch, props.tweetInfo._id)
     }
 
     return (
@@ -53,7 +56,7 @@ function Posts(props) {
                 <button className='reTweetButton' onClick={handleRetweetClick}> {/* tweet retweet btn */}
                     <FontAwesomeIcon icon={faRetweet} className='reTweetIcon' />
                 </button>
-                <button className="likeButton"> {/* tweet like btn */}
+                <button className="likeButton" onClick={handleLike}> {/* tweet like btn */}
                     <FontAwesomeIcon icon={faHeart} className='likeIcon' />
                 </button>
                 <span className="likeNumber">{props.tweetInfo.likes}</span> {/* tweet like counter */}

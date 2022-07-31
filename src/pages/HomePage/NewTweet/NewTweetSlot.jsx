@@ -2,10 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import { faImage } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { SendTweet } from '../../../api/tweet-api'
+import { setTweetText, useTweetDispatch, useTweetState } from '../../../context/TweetContext'
 
 function NewTweetSlot() {
 
-    const [tweetField, setTweetField] = useState()
+    // const [tweetField, setTweetField] = useState()
+    const {tweetText} = useTweetState()
+    const dispatchTweet = useTweetDispatch()
     const [imageFile, setImageFile] = useState()
     const [imagePath, setImagePath] = useState()
 
@@ -15,7 +18,7 @@ function NewTweetSlot() {
         if (e.target.files) {
             setImageFile(e.target.files[0])
             let fileReader = new FileReader()
-            fileReader.onload= (e) => {
+            fileReader.onload = (e) => {
                 setImagePath(e.target.result)
             }
             fileReader.readAsDataURL(e.target.files[0])
@@ -24,7 +27,7 @@ function NewTweetSlot() {
 
     const PostText = () => {
         const formData = new FormData()
-        formData.append("text", tweetField)
+        formData.append("text", tweetText)
         if (imageFile) {
             formData.append("image", imageFile)
         }
@@ -53,8 +56,9 @@ function NewTweetSlot() {
                     id="tweetSlot"
                     placeholder='توییت کن...'
                     className='tweetUserTextArea'
+                    value={tweetText}
                     onChange={(e) => {
-                        setTweetField(e.target.value)
+                        setTweetText(dispatchTweet, e.target.value)
                     }}
                 />
                 <div className='imageUpload'>

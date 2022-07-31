@@ -10,12 +10,15 @@ import { GetTweets } from '../../api/tweet-api';
 function Home() {
 
     const [tweets, setTweets] = useState([])
+    const [loader, setLoader] = useState(false)
 
     useEffect(() => {
+        setLoader(true)
         GetTweets((isOk, data) => {
             if (!isOk) {
                 return alert(data)
             }
+            setLoader(false)
             setTweets(data)
         })
     }, [])
@@ -28,7 +31,14 @@ function Home() {
         <div className='mainSide'>
             <Header tittle={'خانه'} icon={<FontAwesomeIcon icon={faHome} />} />
             <NewTweetSlot />
-            <PostsList data={tweets}/>
+            {
+                loader ?
+                    <div className="spinner-container">
+                        <div className="spinner"></div>
+                    </div>
+                    :
+                    <PostsList data={tweets} />
+            }
         </div>
     )
 }

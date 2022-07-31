@@ -93,7 +93,6 @@
     border-radius: 2rem;
     padding: 11px 24px;
     height: 400px;
-    overflow-y: auto;
     .bestTwitterTittle {
         font-size: 1.25rem;
         margin-bottom: 15px;
@@ -104,6 +103,13 @@
         height: 1.5px;
         background-color: $global-twitter-color;
         margin-bottom: 15px;
+    }
+    ::-webkit-scrollbar {
+        width: 3px;
+    }
+    .tweetersAll {
+        overflow-y: auto;
+        height: 320px;
     }
     .bestTwittersButton {
         cursor: pointer;

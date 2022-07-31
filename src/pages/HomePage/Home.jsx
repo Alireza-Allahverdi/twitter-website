@@ -5,11 +5,15 @@ import PostsList from '../../component/Posts/PostsList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { GetTweets } from '../../api/tweet-api';
+import { setTweetList, useTweetDispatch, useTweetState } from '../../context/TweetContext';
 
 
 function Home() {
 
-    const [tweets, setTweets] = useState([])
+    const dispatchTweet = useTweetDispatch()
+    // you can say like this or defind another variable and then say it like for example tweet.tweetList
+    const {tweetList} = useTweetState() /// this is called destructing
+    
     const [loader, setLoader] = useState(false)
 
     useEffect(() => {
@@ -19,13 +23,9 @@ function Home() {
                 return alert(data)
             }
             setLoader(false)
-            setTweets(data)
+            setTweetList(dispatchTweet, data)
         })
     }, [])
-
-    useEffect(() => {
-        console.log(tweets);
-    }, [tweets])
 
     return (
         <div className='mainSide'>
@@ -37,7 +37,7 @@ function Home() {
                         <div className="spinner"></div>
                     </div>
                     :
-                    <PostsList data={tweets} />
+                    <PostsList data={tweetList} />
             }
         </div>
     )

@@ -139,7 +139,7 @@ function LeftSide() {
                      <div className="spinner"></div>
                   </div>
                   :
-                  <>
+                  <div className='tweetersAll'>
                      {
                         users.map((item, index) => {
                            return <Fragment key={index}>
@@ -169,7 +169,7 @@ function LeftSide() {
                            </Fragment>
                         })
                      }
-                  </>
+                  </div>
             }
          </div>
       </div>

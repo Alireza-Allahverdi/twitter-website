@@ -24,9 +24,6 @@ function App() {
                     <Route path={'auth'} element={isLoggedIn() ? <Navigate to={"/"} /> : <Auth />} />
                 </Routes>
             </TweetProvider>
-
-            {/* <TweetByHashTag /> */}
-            {/* <TweetByUser /> */}
         </div>
     );
 }

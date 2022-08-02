@@ -2,6 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faImage, faRetweet } from '@fortawesome/free-solid-svg-icons'
 import { likeTweet, setTweetText, useTweetDispatch } from '../../context/TweetContext'
+import { LikeReq } from '../../api/tweet-api'
 
 function Posts(props) {
 
@@ -21,7 +22,14 @@ function Posts(props) {
         setTweetText(tweetDispatch, props.tweetInfo.text)
     }
     const handleLike = () => {
-        likeTweet(tweetDispatch, props.tweetInfo._id)
+        // the reason why we can like the comments unlimitedly is because the backend is not design to get the id 
+        // of the user to enable like and dislike ability
+        LikeReq(props.tweetInfo._id, (isOk, data) => {
+            if (!isOk) {
+                return alert(data)
+            }
+            likeTweet(tweetDispatch, props.tweetInfo._id)
+        })
     }
 
     return (
@@ -53,9 +61,11 @@ function Posts(props) {
                 }
             </div>
             <div className="postStuffContainer"> {/* post retweet and like btn container */}
-                <button className='reTweetButton' onClick={handleRetweetClick}> {/* tweet retweet btn */}
-                    <FontAwesomeIcon icon={faRetweet} className='reTweetIcon' />
-                </button>
+                <a href="#tweetSlot">
+                    <button className='reTweetButton' onClick={handleRetweetClick}> {/* tweet retweet btn */}
+                        <FontAwesomeIcon icon={faRetweet} className='reTweetIcon' />
+                    </button>
+                </a>
                 <button className="likeButton" onClick={handleLike}> {/* tweet like btn */}
                     <FontAwesomeIcon icon={faHeart} className='likeIcon' />
                 </button>

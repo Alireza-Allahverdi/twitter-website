@@ -7,8 +7,10 @@ let tweetDispatchContext = createContext() // initializes the dispatching the st
 // reducer to chnage the state value of the new tweet slot
 export const tweetReducer = (state, action) => {
     switch (action.type) {
+        // set the tweet on new tweet slot
         case ACTION.SET_TWEET:
             return { ...state, tweetText: action.payload }
+        // set the tweetlist of all tweets
         case ACTION.SET_TWEET_LIST:
             return { ...state, tweetList: action.payload }
         case ACTION.LIKE_TWEET:
@@ -27,6 +29,8 @@ export const tweetReducer = (state, action) => {
                     ...state.tweetList.slice(indexNum + 1,)
                 ]
             }
+        case ACTION.SET_HASHTAG:
+            return { ...state, hashtagList: action.payload }
         default:
             throw new Error(`the ${action.type} action cannot be resolved`)
     }
@@ -35,7 +39,8 @@ export const tweetReducer = (state, action) => {
 
 const initialState = {
     tweetText: '',
-    tweetList: []
+    tweetList: [],
+    hashtagList: []
 }
 
 // the children of this component will have access to all the states and functions in the context
@@ -88,5 +93,12 @@ export const likeTweet = (dispatch, id) => {
     dispatch({
         type: ACTION.LIKE_TWEET,
         payload: id
+    })
+}
+
+export const setHahstagList = (dispatch, list) => {
+    dispatch({
+        type: ACTION.SET_HASHTAG,
+        payload: list
     })
 }

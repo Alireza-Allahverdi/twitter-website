@@ -5,9 +5,6 @@ export const GetHashtags = (callback) => {
         .get("getAllHashTags")
         .then((res) => {
             let data = res.data
-            console.log(data);
-
-
             callback(true, data)
         })
         .catch((err) => {

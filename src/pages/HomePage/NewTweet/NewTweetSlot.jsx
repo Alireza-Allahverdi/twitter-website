@@ -26,12 +26,14 @@ function NewTweetSlot() {
     }
 
     const PostText = () => {
+        if (tweetText === "") {
+            return
+        }
         const formData = new FormData()
         formData.append("text", tweetText)
         if (imageFile) {
             formData.append("image", imageFile)
         }
-
         SendTweet(formData, (isOk, data) => {
             if (!isOk) {
                 return alert(data)

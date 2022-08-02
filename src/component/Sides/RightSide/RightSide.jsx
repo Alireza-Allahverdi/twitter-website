@@ -3,11 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faHashtag } from '@fortawesome/free-solid-svg-icons';
 import { GetHashtags } from '../../../api/hashtag-api';
+import { setHahstagList, useTweetDispatch, useTweetState } from '../../../context/TweetContext';
 
 
 function RightSide() {
 
-    const [hashtags, setHashtags] = useState([])
+    const { hashtagList } = useTweetState()
+    const dispatchHashtag = useTweetDispatch()
+
     const [loader, setLoader] = useState(false)
 
     useEffect(() => {
@@ -16,7 +19,7 @@ function RightSide() {
             if (!isOk) {
                 return
             }
-            setHashtags(data)
+            setHahstagList(dispatchHashtag, data)
             setLoader(false)
         })
     }, [])
@@ -46,7 +49,7 @@ function RightSide() {
                             <div className="spinner"></div>
                         </div>
                         :
-                        hashtags.map((item, index) => {
+                        hashtagList.map((item, index) => {
                             return <Fragment key={index}>
                                 <a href={`/hashtags/${item.text}`}>
                                     <button className='hashtagButton'>

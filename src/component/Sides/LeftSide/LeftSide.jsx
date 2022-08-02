@@ -39,9 +39,9 @@ function LeftSide() {
          if (!isOk) {
             return alert(data)
          }
-         alert('عکس پروفایل تغییر کرد')
          setLoaderImg(false)
          localStorage.setItem("image", data.imagePath)
+         window.location.reload()
       })
    }
 

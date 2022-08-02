@@ -7,13 +7,14 @@
     background-color: white;
     margin: 7px 0px;
     flex: 1;
-    
+
     .posterImg {
         width: 50px;
         height: 50px;
         border-radius: 50%;
     }
-    .temporarily { // a temporarily used icon instead of picture untill the api arrives
+    .temporarily {
+        // a temporarily used icon instead of picture untill the api arrives
         width: max-content;
     }
     // the user posted this tweet with his persian name, id, img
@@ -23,9 +24,9 @@
         // tweet user persian name
         .posterPersianName {
             margin: {
-                top: .9rem;
-                right: 1rem
-            };
+                top: 0.9rem;
+                right: 1rem;
+            }
         }
         // id of the user that posted the tweet
         .posterID {
@@ -40,7 +41,7 @@
     // the text part of post
     .postText {
         margin-top: 1rem;
-        font-size: .95rem;
+        font-size: 0.95rem;
         text-align: start;
         line-height: 1.5rem;
         // all hashtags that are found will have this style (this is the way of finding the changed html tag in css
@@ -61,8 +62,8 @@
         margin-top: 15px;
         // post retweet btn
         .reTweetButton {
-            max-width: 35px;
-            max-height: 33px;
+            width: 35px;
+            height: 33px;
             cursor: pointer;
             color: #a8a8a8;
             background-color: white;
@@ -71,11 +72,9 @@
             margin-left: 1rem;
             align-items: center;
             justify-content: center;
-            &:hover {
-                color: $global-twitter-color;
-            }
             // retweet icon
             .reTweetIcon {
+                color: $global-twitter-color;
                 font-size: 16px;
             }
         }
@@ -91,11 +90,9 @@
             margin-left: 1rem;
             align-items: center;
             justify-content: center;
-            &:hover {
-                color: red;
-            }
             // like icon
             .likeIcon {
+                color: red;
                 font-size: 16px;
             }
         }

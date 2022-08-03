@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
+import { GetHashtags } from "../api/hashtag-api";
 import { ACTION } from "./actions";
 
 let tweetStateContext = createContext() // initializes the using of the state value
@@ -111,5 +112,17 @@ export const setUserList = (dispatch, list) => {
     dispatch({
         type: ACTION.SET_USER,
         payload: list
+    })
+}
+
+// will update hashtags when a new tweet is written and posted
+export const updateHashtagList = (dispatch) => {
+    GetHashtags((isOk, data) => {
+        if (isOk) {
+            dispatch({
+                type: ACTION.SET_HASHTAG,
+                payload: data
+            })
+        }
     })
 }

@@ -13,15 +13,15 @@ export const GetUsers = (callback) => {
         })
 }
 
-export const GetTweetByUserReq = (user,callback) => {
+export const GetTweetByUserReq = (user, callback) => {
     AxiosPrivate()
-    .post("getAllTweet", {user})
-    .then((res) => {
-        let data = res.data
-        callback(true,data)
-    })
-    .catch((err) => {
-        callback(false, err)
-        console.error(err)
-    })
+        .post("getAllTweet", { user })
+        .then((res) => {
+            let data = res.data
+            callback(true, data)
+        })
+        .catch((err) => {
+            callback(false, err)
+            console.error(err)
+        })
 }

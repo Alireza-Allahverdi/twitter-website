@@ -11,9 +11,10 @@ function Posts(props) {
     /* TODO the href will be replaced by $& */
     // will find the hashtags and make the to a link and tweeter colored
     const CheckForHashTag = (text) => {
+        let textWithoutHashTag = text.slice(1)
         return text.replace(/#\S+/g, // for more information about regex js visit w3school
             `<a 
-        href='/hashtags/:$&'>
+        href='/hashtags/$&'>
         $&
         </a>`)
         // the $& will return innerhtml of whatever was found by the regex => for .exp if #hello is found, it will return #hello
@@ -47,7 +48,7 @@ function Posts(props) {
                     {props.tweetInfo.user.name}
                 </span>
                 <span className="posterID">
-                    {props.tweetInfo.user.username}
+                    {props.tweetInfo.user.username}@
                 </span>
             </div>
             <div className="postText"> {/* post text container */}

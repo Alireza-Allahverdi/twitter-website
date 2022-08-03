@@ -12,9 +12,7 @@ function TweetByHashTag() {
     const { hashTags } = useParams(); // will give access to params of the route path ( mu know and include the params name in this example it is hashtag )
     // const param = useParams() // if this one is used most include the params name aswell for example in this project it is param.hashtag
 
-
     const { tweetList } = useTweetState()
-
     const dispatchTweet = useTweetDispatch()
 
     useEffect(() => {

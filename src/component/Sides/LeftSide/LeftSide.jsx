@@ -1,28 +1,33 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faUserNinja } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UploadUserPhoto } from '../../../api/auth-api';
 import { GetUsers } from '../../../api/user-api';
+import { setUserList, useTweetDispatch, useTweetState } from '../../../context/TweetContext';
 
 function LeftSide() {
 
-   const [users, setUsers] = useState([])
+
+   // TDODODOOO CONNETCUSERS HERE AND THEN UPDATE THE TWEETLIST IN TWEETBY USEER
    const [dropdownState, setDropdownState] = useState(false)
    const [userInfo, setUserInfo] = useState({
       name: !!localStorage.getItem('name') ? localStorage.getItem('name') : "no data",
       userName: !!localStorage.getItem('username') ? localStorage.getItem('username') : "no data",
       image: localStorage.getItem('image')
    })
-   const [imageFile, setImageFile] = useState()
+   const { userList } = useTweetState()
+   const userDispatch = useTweetDispatch()
+   // const [imageFile, setImageFile] = useState()
    const [loaderImg, setLoaderImg] = useState(false)
    const [loaderUser, setLoaderUser] = useState(false)
 
    const imageInp = useRef()
 
    const handleImage = (e) => {
-      if (e.target.files && e.target.files.length > 0) {
-         setImageFile(e.target.files[0])
-      }
+      // not neccesseraly needed
+      // if (e.target.files && e.target.files.length > 0) {
+      //    setImageFile(e.target.files[0])
+      // }
       const fileReader = new FileReader()
       fileReader.onload = (e) => {
          setUserInfo({
@@ -52,7 +57,7 @@ function LeftSide() {
             return
          }
          setLoaderUser(false)
-         setUsers(data)
+         setUserList(userDispatch, data)
       })
    }, [])
 
@@ -141,16 +146,16 @@ function LeftSide() {
                   :
                   <div className='tweetersAll'>
                      {
-                        users.map((item, index) => {
+                        userList.map((item, index) => {
                            return <Fragment key={index}>
-                              <a href={`/users/${item.username}`}>
+                              <a href={`/users/${item._id}/${item.username}`}>
                                  <button className='bestTwittersButton'>
                                     <div className="twitters">
                                        <span className='bestTwittersImg'>
                                           {
                                              item.image ?
                                                 <img className='bestTwittersImg' src={item.image} alt="" />
-                                                : <FontAwesomeIcon icon={faUser} />
+                                                : <FontAwesomeIcon icon={faUserNinja} /> 
 
                                           }
                                        </span>

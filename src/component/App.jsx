@@ -18,7 +18,7 @@ function App() {
                     <Route element={isLoggedIn() ? <SideBarLayout /> : <Auth />}>
                         <Route path={'/'} element={<Home />} />
                         <Route path={'hashtags/:hashTags'} element={<TweetByHashTag />} />
-                        <Route path={'users/:user'} element={<TweetByUser />} />
+                        <Route path={'users/:id/:username'} element={<TweetByUser />} />
                         <Route path={'*'} element={<Error404 />} />
                     </Route>
                     <Route path={'auth'} element={isLoggedIn() ? <Navigate to={"/"} /> : <Auth />} />

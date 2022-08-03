@@ -1,9 +1,28 @@
+import { useEffect } from "react"
 import { Outlet } from "react-router"
 import RightSide from "../RightSide/RightSide"
 import LeftSide from "../LeftSide/LeftSide"
+import { GetProfileReq } from "../../../api/auth-api"
+import {useNavigate} from "react-router-dom"
 
 
 function SideBarLayout() {
+
+  let navigate = useNavigate()
+
+  useEffect(() => {
+    GetProfileReq((isOk, data) => {
+      if (!isOk) {
+        navigate("/auth")
+        return
+      }
+      localStorage.setItem("name",data.name)
+      localStorage.setItem("image",data.image)
+      localStorage.setItem("username",data.username)
+      localStorage.setItem("x-auth-token",data["x-auth-token"])
+    })
+  }, [])
+
   return (
     <>
         <RightSide />

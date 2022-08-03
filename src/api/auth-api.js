@@ -38,3 +38,15 @@ export const UploadUserPhoto = (photo, callback) => {
         callback(false, err.response.data.message)
     })
 }
+
+export const GetProfileReq = (callback) => {
+    AxiosPrivate()
+    .get("getProfile")
+    .then((res) => {
+        let data = res.data
+        callback(true, data)
+    })
+    .catch((err) => {
+        console.error(err)
+    })
+}

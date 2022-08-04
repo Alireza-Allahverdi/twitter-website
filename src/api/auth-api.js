@@ -2,9 +2,9 @@ import axios, { AxiosPrivate } from "./api";
 
 export const LoginApi = (user, callback) => {
     axios
-        .post("/api/login",user)
+        .post("/api/login", user)
         .then((res) => {
-            let data =  res.data
+            let data = res.data
             callback(true, data)
         })
         .catch((err) => {
@@ -15,9 +15,9 @@ export const LoginApi = (user, callback) => {
 
 export const RegisterApi = (user, callback) => {
     axios
-        .post("/api/register",user)
+        .post("/api/register", user)
         .then((res) => {
-            let data =  res.data
+            let data = res.data
             callback(true, data)
         })
         .catch((err) => {
@@ -28,25 +28,25 @@ export const RegisterApi = (user, callback) => {
 
 export const UploadUserPhoto = (photo, callback) => {
     AxiosPrivate()
-    .post("uploadUserPhoto",photo)
-    .then((res) => {
-        let data = res.data
-        callback(true, data)
-    })
-    .catch((err) => {
-        console.error(err)
-        callback(false, err.response.data.message)
-    })
+        .post("uploadUserPhoto", photo)
+        .then((res) => {
+            let data = res.data
+            callback(true, data)
+        })
+        .catch((err) => {
+            console.error(err)
+            callback(false, err.response.data.message)
+        })
 }
 
 export const GetProfileReq = (callback) => {
     AxiosPrivate()
-    .get("getProfile")
-    .then((res) => {
-        let data = res.data
-        callback(true, data)
-    })
-    .catch((err) => {
-        console.error(err)
-    })
+        .get("getProfile")
+        .then((res) => {
+            let data = res.data
+            callback(true, data)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
 }

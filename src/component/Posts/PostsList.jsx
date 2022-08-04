@@ -7,7 +7,7 @@ function PostsList(props) {
             {
                 props.data.map((item, index) => {
                     return <Fragment key={index}>
-                        <Posts tweetInfo={item}/>
+                        <Posts tweetInfo={item} />
                     </Fragment>
                 })
             }

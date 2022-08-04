@@ -19,10 +19,10 @@ function Register() {
 
     const ValidateAndAccept = () => {
         if (!state.name || !state.userName || !state.password || !state.rePassword) {
-            return 
+            return
         }
         if (!validateRegexPassword.test(state.password)) {
-            return 
+            return
         }
         SubmitReq()
     }
@@ -30,7 +30,7 @@ function Register() {
     const OnChangeHandler = (e) => {
         setState({
             ...state,
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value
         })
     }
 

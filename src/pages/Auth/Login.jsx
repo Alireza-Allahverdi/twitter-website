@@ -22,7 +22,7 @@ function Login() {
     const ValidateAndAccept = () => {
         if (!field.username || !field.password) {
             return
-        } 
+        }
         SubmitReq()
     }
 
@@ -38,10 +38,10 @@ function Login() {
                 return
             }
             setReqErrState(false)
-            localStorage.setItem("name",data.name)
-            localStorage.setItem("image",data.image)
-            localStorage.setItem("username",data.username)
-            localStorage.setItem("x-auth-token",data["x-auth-token"])
+            localStorage.setItem("name", data.name)
+            localStorage.setItem("image", data.image)
+            localStorage.setItem("username", data.username)
+            localStorage.setItem("x-auth-token", data["x-auth-token"])
             localStorage.removeItem('tab')
             window.location.reload()
         })

@@ -12,8 +12,8 @@ function Home() {
 
     const dispatchTweet = useTweetDispatch()
     // you can say like this or defind another variable and then say it like for example tweet.tweetList
-    const {tweetList} = useTweetState() /// this is called destructing
-    
+    const { tweetList } = useTweetState() /// this is called destructing
+
     const [loader, setLoader] = useState(false)
 
     useEffect(() => {

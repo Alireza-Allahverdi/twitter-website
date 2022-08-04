@@ -155,7 +155,7 @@ function LeftSide() {
                                           {
                                              item.image ?
                                                 <img className='bestTwittersImg' src={item.image} alt="" />
-                                                : <FontAwesomeIcon icon={faUserNinja} /> 
+                                                : <FontAwesomeIcon icon={faUserNinja} />
 
                                           }
                                        </span>

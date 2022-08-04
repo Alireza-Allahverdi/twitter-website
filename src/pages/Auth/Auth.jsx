@@ -11,11 +11,11 @@ function Auth() {
     useEffect(() => {
         if (JSON.parse(localStorage.getItem("tab"))) {
             setTabState({
-                log:false,
+                log: false,
                 reg: true
             })
         }
-    },[])
+    }, [])
 
     return (
         <div className='authPageContainer'>

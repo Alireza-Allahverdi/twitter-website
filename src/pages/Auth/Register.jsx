@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { RegisterApi } from '../../api/auth-api';
 import { validateRegexPassword } from './Regex'
 
-function Register() {
+function Register(props) {
 
     const REGEX_PASSWORD = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@$!%*#?&])[A-Za-z0-9@$!%*#?&]{8,20}$";
 
@@ -35,6 +35,7 @@ function Register() {
     }
 
     const SubmitReq = () => {
+        props.loader(true)
         let userInfo = {
             name: state.name,
             username: state.userName,
@@ -42,10 +43,14 @@ function Register() {
         }
         RegisterApi(userInfo, (isOk, data) => {
             if (!isOk) {
+                props.loader(false)
                 setReqErrState(true)
                 setErrContent(data)
+                alert(data)
+                return
             }
             setReqErrState(false)
+            props.loader(false)
             localStorage.setItem("name", data.name)
             localStorage.setItem("username", data.username)
             localStorage.setItem("image", data.image)

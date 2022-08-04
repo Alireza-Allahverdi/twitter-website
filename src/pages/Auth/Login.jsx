@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { LoginApi } from '../../api/auth-api'
 
-function Login() {
+function Login(props) {
 
     const [field, setField] = useState({
         username: '',
@@ -27,16 +27,20 @@ function Login() {
     }
 
     const SubmitReq = () => {
+        props.loader(true)
         let user = {
             username: field.username,
             password: field.password
         }
         LoginApi(user, (isOk, data) => {
             if (!isOk) {
+                props.loader(false)
                 setReqErrState(true)
                 setErrContent(data)
+                alert(data)
                 return
-            }
+            } 
+            props.loader(false)
             setReqErrState(false)
             localStorage.setItem("name", data.name)
             localStorage.setItem("image", data.image)

@@ -34,6 +34,8 @@ export const tweetReducer = (state, action) => {
             return { ...state, hashtagList: action.payload }
         case ACTION.SET_USER:
             return { ...state, userList: action.payload }
+        case ACTION.SET_LOADER:
+            return { loaderState: action.payload }
         default:
             throw new Error(`the ${action.type} action cannot be resolved`)
     }
@@ -44,7 +46,8 @@ const initialState = {
     tweetText: '',
     tweetList: [],
     hashtagList: [],
-    userList: []
+    userList: [],
+    loaderState: false
 }
 
 // the children of this component will have access to all the states and functions in the context
@@ -124,5 +127,12 @@ export const updateHashtagList = (dispatch) => {
                 payload: data
             })
         }
+    })
+}
+
+export const setLoaderState = (dispatch, state) => {
+    dispatch({
+        type: ACTION.SET_LOADER,
+        payload: state
     })
 }

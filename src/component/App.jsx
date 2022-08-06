@@ -6,25 +6,41 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import Error404 from '../pages/P404/Page404';
 import SideBarLayout from './Sides/Layout/SideBarLayout';
 import Auth from '../pages/Auth/Auth';
-import { TweetProvider } from '../context/TweetContext';
+import { TweetProvider, useTweetState } from '../context/TweetContext';
+import { BarLoader } from 'react-spinners';
 
 
 function App() {
 
+    const { loaderState } = useTweetState()
+
     return (
-        <div className="app">
-            <TweetProvider>
-                <Routes>
-                    <Route element={isLoggedIn() ? <SideBarLayout /> : <Auth />}>
-                        <Route path={'/'} element={<Home />} />
-                        <Route path={'hashtags/:hashTags'} element={<TweetByHashTag />} />
-                        <Route path={'users/:id/:username'} element={<TweetByUser />} />
-                        <Route path={'*'} element={<Error404 />} />
-                    </Route>
-                    <Route path={'auth'} element={isLoggedIn() ? <Navigate to={"/"} /> : <Auth />} />
-                </Routes>
-            </TweetProvider>
-        </div>
+
+        <>
+            {
+                loaderState ?
+                    <>
+                        <BarLoader
+                            width={200}
+                            height={5}
+                            color='#00b3ff'
+                        />
+                        <p>لطفا شکیبا باشید</p>
+                    </>
+                    :
+                    <div className="app">
+                        <Routes>
+                            <Route element={isLoggedIn() ? <SideBarLayout /> : <Auth />}>
+                                <Route path={'/'} element={<Home />} />
+                                <Route path={'hashtags/:hashTags'} element={<TweetByHashTag />} />
+                                <Route path={'users/:id/:username'} element={<TweetByUser />} />
+                                <Route path={'*'} element={<Error404 />} />
+                            </Route>
+                            <Route path={'auth'} element={isLoggedIn() ? <Navigate to={"/"} /> : <Auth />} />
+                        </Routes>
+                    </div>
+            }
+        </>
     );
 }
 

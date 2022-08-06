@@ -4,11 +4,15 @@ import RightSide from "../RightSide/RightSide"
 import LeftSide from "../LeftSide/LeftSide"
 import { GetProfileReq } from "../../../api/auth-api"
 import { useNavigate } from "react-router-dom"
+import { useTweetState } from "../../../context/TweetContext"
+import { BarLoader } from "react-spinners"
 
 
 function SideBarLayout() {
 
   let navigate = useNavigate()
+
+  const { loaderState } = useTweetState()
 
   useEffect(() => {
     GetProfileReq((isOk, data) => {
@@ -25,13 +29,28 @@ function SideBarLayout() {
 
   return (
     <>
-      <RightSide />
-      <hr />
-      {/* outlet allows it to take the routes that need these features as children inside a route now
-        all the pages except the authentication page have the right and left sidebar */}
-      <Outlet />
-      <hr />
-      <LeftSide />
+      {
+        loaderState ?
+          <>
+            <BarLoader
+              width={200}
+              height={5}
+              color='#00b3ff'
+            />
+            <p>لطفا شکیبا باشید</p>
+          </>
+          :
+          <>
+            <RightSide />
+            <hr />
+            {/* outlet allows it to take the routes that need these features as children inside a route now
+  all the pages except the authentication page have the right and left sidebar */}
+            <Outlet />
+            <hr />
+            <LeftSide />
+
+          </>
+      }
     </>
   )
 }

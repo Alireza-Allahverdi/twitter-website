@@ -2,7 +2,7 @@ import React, { Fragment, useRef, useState } from 'react'
 import { faImage } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { SendTweet } from '../../../api/tweet-api'
-import { setTweetText, updateHashtagList, useTweetDispatch, useTweetState } from '../../../context/TweetContext'
+import { setLoaderState, setTweetText, updateHashtagList, useTweetDispatch, useTweetState } from '../../../context/TweetContext'
 
 function NewTweetSlot() {
 
@@ -11,7 +11,6 @@ function NewTweetSlot() {
     const dispatchTweet = useTweetDispatch()
     const [imageFile, setImageFile] = useState()
     const [imagePath, setImagePath] = useState()
-    const [loader, setLoader] = useState()
 
     const uploadImg = useRef()
 
@@ -37,24 +36,18 @@ function NewTweetSlot() {
         }
         SendTweet(formData, (isOk, data) => {
             if (!isOk) {
-                return alert(data)
+                return
             }
             if (tweetText.includes("#")) {
                 updateHashtagList(dispatchTweet)
             }
-            setLoader(false)
             window.location.reload()
+            setLoaderState(dispatchTweet, false)
         })
     }
 
     return (
         <div className='newTweet'>
-            {
-                loader ?
-                    <div className="spinner-container">
-                        <div className="spinner"></div>
-                    </div>
-                    :
                     <Fragment>
                         <div className="tweetContainer">
                             <span>
@@ -88,7 +81,7 @@ function NewTweetSlot() {
                                     if (!tweetText) {
                                         return
                                     }
-                                    setLoader(true)
+                                    setLoaderState(dispatchTweet,true)
                                     PostText()
                                 }}
                             >
@@ -110,7 +103,6 @@ function NewTweetSlot() {
                             />
                         </div>
                     </Fragment>
-            }
         </div>
     )
 }

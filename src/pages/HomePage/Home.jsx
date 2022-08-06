@@ -5,7 +5,7 @@ import PostsList from '../../component/Posts/PostsList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { GetTweets } from '../../api/tweet-api';
-import { setTweetList, useTweetDispatch, useTweetState } from '../../context/TweetContext';
+import {  setTweetList, useTweetDispatch, useTweetState } from '../../context/TweetContext';
 
 
 function Home() {
@@ -20,7 +20,7 @@ function Home() {
         setLoader(true)
         GetTweets((isOk, data) => {
             if (!isOk) {
-                return alert(data)
+                return
             }
             setLoader(false)
             setTweetList(dispatchTweet, data)

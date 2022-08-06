@@ -7,27 +7,12 @@ import Error404 from '../pages/P404/Page404';
 import SideBarLayout from './Sides/Layout/SideBarLayout';
 import Auth from '../pages/Auth/Auth';
 import { TweetProvider, useTweetState } from '../context/TweetContext';
-import { BarLoader } from 'react-spinners';
 
 
 function App() {
 
-    const { loaderState } = useTweetState()
-
     return (
 
-        <>
-            {
-                loaderState ?
-                    <>
-                        <BarLoader
-                            width={200}
-                            height={5}
-                            color='#00b3ff'
-                        />
-                        <p>لطفا شکیبا باشید</p>
-                    </>
-                    :
                     <div className="app">
                         <Routes>
                             <Route element={isLoggedIn() ? <SideBarLayout /> : <Auth />}>
@@ -39,8 +24,6 @@ function App() {
                             <Route path={'auth'} element={isLoggedIn() ? <Navigate to={"/"} /> : <Auth />} />
                         </Routes>
                     </div>
-            }
-        </>
     );
 }
 

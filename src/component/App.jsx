@@ -6,13 +6,11 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import Error404 from '../pages/P404/Page404';
 import SideBarLayout from './Sides/Layout/SideBarLayout';
 import Auth from '../pages/Auth/Auth';
-import { TweetProvider, useTweetState } from '../context/TweetContext';
 
 
 function App() {
 
     return (
-
                     <div className="app">
                         <Routes>
                             <Route element={isLoggedIn() ? <SideBarLayout /> : <Auth />}>

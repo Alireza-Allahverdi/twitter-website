@@ -31,14 +31,14 @@ function SideBarLayout() {
     <>
       {
         loaderState ?
-          <>
+          <div className="barloader">
             <BarLoader
               width={200}
               height={5}
               color='#00b3ff'
             />
             <p>لطفا شکیبا باشید</p>
-          </>
+          </div>
           :
           <>
             <RightSide />

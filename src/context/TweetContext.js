@@ -36,6 +36,8 @@ export const tweetReducer = (state, action) => {
             return { ...state, userList: action.payload }
         case ACTION.SET_LOADER:
             return { loaderState: action.payload }
+        case ACTION.SET_OFFCANVAS_SIDEBAR:
+            return {...state, offcanvasState: !state.offcanvasState}
         default:
             throw new Error(`the ${action.type} action cannot be resolved`)
     }
@@ -47,7 +49,8 @@ const initialState = {
     tweetList: [],
     hashtagList: [],
     userList: [],
-    loaderState: false
+    loaderState: false,
+    offcanvasState: false
 }
 
 // the children of this component will have access to all the states and functions in the context
@@ -111,6 +114,7 @@ export const setHahstagList = (dispatch, list) => {
     })
 }
 
+// set the users
 export const setUserList = (dispatch, list) => {
     dispatch({
         type: ACTION.SET_USER,
@@ -130,6 +134,7 @@ export const updateHashtagList = (dispatch) => {
     })
 }
 
+// set the loader that appears in home and auth page state
 export const setLoaderState = (dispatch, state) => {
     dispatch({
         type: ACTION.SET_LOADER,

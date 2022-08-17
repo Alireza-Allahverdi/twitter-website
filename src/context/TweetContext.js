@@ -141,3 +141,10 @@ export const setLoaderState = (dispatch, state) => {
         payload: state
     })
 }
+
+// set the offcanvas sidebar state
+export const setOffcanvasState = (dispatch) => {
+    dispatch({
+        type: ACTION.SET_OFFCANVAS_SIDEBAR
+    })
+}

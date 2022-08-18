@@ -13,6 +13,7 @@ function SideBarLayout() {
   let navigate = useNavigate()
 
   const { loaderState } = useTweetState()
+  const { offcanvasState } = useTweetState()
 
   useEffect(() => {
     GetProfileReq((isOk, data) => {
@@ -41,8 +42,12 @@ function SideBarLayout() {
           </div>
           :
           <>
-            <RightSide />
-            <hr />
+            <div className={offcanvasState ? "rightSideStuffOpen" :"rightSideStuff"}>
+              {
+                <RightSide />
+              }
+              <hr />
+            </div>
             {/* outlet allows it to take the routes that need these features as children inside a route now
   all the pages except the authentication page have the right and left sidebar */}
             <Outlet />

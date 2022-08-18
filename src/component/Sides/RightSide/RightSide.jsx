@@ -41,7 +41,6 @@ function RightSide() {
                 داغ ترین هشتگ ها
             </h2>
 
-            {/*this is where the mapping begin :)))*/}
             <div className="hashtagsContainer">
                 {
                     loader ?

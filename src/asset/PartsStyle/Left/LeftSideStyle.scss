@@ -154,3 +154,10 @@
         background-color: rgb(151, 151, 151);
     }
 }
+
+@media only screen and (max-width:850px) {
+    .leftSide {
+        flex: .4;
+        max-width: 40%;
+    }
+}

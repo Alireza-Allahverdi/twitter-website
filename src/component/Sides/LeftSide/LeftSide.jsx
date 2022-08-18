@@ -3,13 +3,16 @@ import { faUser, faUserNinja } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UploadUserPhoto } from '../../../api/auth-api';
 import { GetUsers } from '../../../api/user-api';
-import { setUserList, useTweetDispatch, useTweetState } from '../../../context/TweetContext';
+import { setDropdownState, setUserList, useTweetDispatch, useTweetState } from '../../../context/TweetContext';
 
 function LeftSide() {
 
 
+   let wrapperref = useRef()
+   useOutsideDropDownClick(wrapperref)
    // TDODODOOO CONNETCUSERS HERE AND THEN UPDATE THE TWEETLIST IN TWEETBY USEER
-   const [dropdownState, setDropdownState] = useState(false)
+   const { dropdownState } = useTweetState()
+
    const [userInfo, setUserInfo] = useState({
       name: !!localStorage.getItem('name') ? localStorage.getItem('name') : "no data",
       userName: !!localStorage.getItem('username') ? localStorage.getItem('username') : "no data",
@@ -66,7 +69,7 @@ function LeftSide() {
          <div
             className="userInfo"
             onClick={() => {
-               setDropdownState(!dropdownState)
+               setDropdownState(userDispatch, !dropdownState)
             }}
          >
             {
@@ -100,7 +103,8 @@ function LeftSide() {
             dropdownState &&
             <div
                className="dropdownMenu"
-               onMouseLeave={() => { setDropdownState(false) }}
+               ref={wrapperref}
+               onMouseLeave={() => { setDropdownState(userDispatch, false) }}
             >
                {/* TODO complete progfile page */}
                <div className="dropdownItem">
@@ -180,5 +184,27 @@ function LeftSide() {
       </div>
    )
 }
+
+function useOutsideDropDownClick(ref) {
+
+   const dropdownDispatch = useTweetDispatch()
+
+   useEffect(() => {
+     /**
+      * Alert if clicked on outside of element
+      */
+     function handleClickOutside(event) {
+       if (ref.current && !ref.current.contains(event.target)) {
+         setDropdownState(dropdownDispatch, false)
+       }
+     }
+     // Bind the event listener
+     document.addEventListener("mousedown", handleClickOutside);
+     return () => {
+       // Unbind the event listener on clean up
+       document.removeEventListener("mousedown", handleClickOutside);
+     };
+   }, [ref]);
+ }
 
 export default LeftSide

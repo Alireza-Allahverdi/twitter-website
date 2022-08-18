@@ -39,7 +39,7 @@ export const tweetReducer = (state, action) => {
         case ACTION.SET_LOADER:
             return { loaderState: action.payload }
         case ACTION.SET_OFFCANVAS_SIDEBAR:
-            return { ...state, offcanvasState: !state.offcanvasState }
+            return { ...state, offcanvasState: action.payload }
         default:
             throw new Error(`the ${action.type} action cannot be resolved`)
     }
@@ -146,9 +146,10 @@ export const setLoaderState = (dispatch, state) => {
 }
 
 // set the offcanvas sidebar state
-export const setOffcanvasState = (dispatch) => {
+export const setOffcanvasState = (dispatch, state) => {
     dispatch({
-        type: ACTION.SET_OFFCANVAS_SIDEBAR
+        type: ACTION.SET_OFFCANVAS_SIDEBAR,
+        payload: state
     })
 }
 

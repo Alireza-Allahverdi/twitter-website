@@ -11,10 +11,15 @@ function Posts(props) {
     /* TODO the href will be replaced by $& */
     // will find the hashtags and make the to a link and tweeter colored
     const CheckForHashTag = (text) => {
-        let textWithoutHashTag = text.slice(1)
-        return text.replace(/#\S+/g, // for more information about regex js visit w3school
+        let pattern = /#\S+/g
+        let textMatch = text.match(pattern)
+        let textWithoutHashTag = ''
+        if (textMatch) {
+            textWithoutHashTag = textMatch[0].slice(1)
+        }
+        return text.replace(pattern, // for more information about regex js visit w3school
             `<a 
-        href='/hashtags/$&'>
+        href='/hashtags/${textWithoutHashTag}'>
         $&
         </a>`)
         // the $& will return innerhtml of whatever was found by the regex => for .exp if #hello is found, it will return #hello

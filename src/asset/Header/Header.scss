@@ -4,6 +4,10 @@
     background-color: white;
 }
 
+.hamburger {
+    display: none;
+}
+
 .headerIcon {
     font-size: 1.2rem;
 }
@@ -19,4 +23,13 @@
     filter: opacity(.2);
     width: 100%;
     height: 1.5px;
+}
+
+@media only screen and (max-width:850px) {
+    .hamburger {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 1.2rem;
+        margin-left: 1rem;
+    }
 }

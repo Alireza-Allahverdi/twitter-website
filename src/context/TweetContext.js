@@ -34,10 +34,12 @@ export const tweetReducer = (state, action) => {
             return { ...state, hashtagList: action.payload }
         case ACTION.SET_USER:
             return { ...state, userList: action.payload }
+        case ACTION.SET_DROP_DOWN_STATE:
+            return { ...state, dropdownState: action.payload }
         case ACTION.SET_LOADER:
             return { loaderState: action.payload }
         case ACTION.SET_OFFCANVAS_SIDEBAR:
-            return {...state, offcanvasState: !state.offcanvasState}
+            return { ...state, offcanvasState: !state.offcanvasState }
         default:
             throw new Error(`the ${action.type} action cannot be resolved`)
     }
@@ -49,6 +51,7 @@ const initialState = {
     tweetList: [],
     hashtagList: [],
     userList: [],
+    dropdownState: false,
     loaderState: false,
     offcanvasState: false
 }
@@ -146,5 +149,13 @@ export const setLoaderState = (dispatch, state) => {
 export const setOffcanvasState = (dispatch) => {
     dispatch({
         type: ACTION.SET_OFFCANVAS_SIDEBAR
+    })
+}
+
+// set the dropdown that shows some options for profile
+export const setDropdownState = (dispatch, state) => {
+    dispatch({
+        type: ACTION.SET_DROP_DOWN_STATE,
+        payload: state
     })
 }

@@ -1,12 +1,15 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faHashtag } from '@fortawesome/free-solid-svg-icons';
 import { GetHashtags } from '../../../api/hashtag-api';
-import { setHahstagList, useTweetDispatch, useTweetState } from '../../../context/TweetContext';
+import { setHahstagList, setOffcanvasState, useTweetDispatch, useTweetState } from '../../../context/TweetContext';
 
 
 function RightSide() {
+
+    let wrapperRef = useRef()
+    useOnOutSideClick(wrapperRef)
 
     const { hashtagList } = useTweetState()
     const dispatchHashtag = useTweetDispatch()
@@ -25,7 +28,7 @@ function RightSide() {
     }, [])
 
     return (
-        <div className='rightSide'>
+        <div className='rightSide' ref={wrapperRef}>
             <a href="/">
                 <div className="twitterTitle">
                     <span className='icon'>
@@ -68,6 +71,22 @@ function RightSide() {
             </div>
         </div>
     )
+}
+
+function useOnOutSideClick(ref)  {
+    const offcanvasDispatch = useTweetDispatch()
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (ref.current && !ref.current.contains(event.target)) {
+                setOffcanvasState(offcanvasDispatch, false)
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside)
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside)
+        }
+    },[ref])
 }
 
 export default RightSide

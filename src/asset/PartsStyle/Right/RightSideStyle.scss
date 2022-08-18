@@ -88,12 +88,14 @@ a {
     .rightSideStuffOpen {
         display: flex;
         position: absolute;
-        background-color: white;
-        width: 200px;
+        width: 100%;
         z-index: 2;
         transition: 0.5s;
         height: 100vh;
+        background-color: rgba(0,0,0,.4);
         .rightSide {
+            background-color: white;
+            max-width: 200px;
             height: 93%;
             .hashtagsContainer {
                 height: 70%;

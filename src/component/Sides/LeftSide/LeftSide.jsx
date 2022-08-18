@@ -107,11 +107,11 @@ function LeftSide() {
                onMouseLeave={() => { setDropdownState(userDispatch, false) }}
             >
                {/* TODO complete progfile page */}
-               <div className="dropdownItem">
+               {/* <div className="dropdownItem">
                   <p>
                      پروفایل
                   </p>
-               </div>
+               </div> */}
                <div
                   className="dropdownItem"
                   onClick={() => {

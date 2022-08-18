@@ -1,8 +1,12 @@
+.rightSideStuff {
+    flex: 0.18;
+    display: flex;
+}
+
 .rightSide {
     font-family: $global-font-family;
     padding: 1.5rem 1rem;
     flex-grow: 1;
-    flex: 0.18;
 }
 
 a {
@@ -76,3 +80,25 @@ a {
         color: rgb(0, 179, 255);
     }
 }
+
+@media only screen and (max-width:850px) {
+    .rightSideStuff {
+        display: none;
+    }
+    .rightSideStuffOpen {
+        display: flex;
+        position: absolute;
+        background-color: white;
+        width: 200px;
+        z-index: 2;
+        transition: 0.5s;
+        height: 100vh;
+        .rightSide {
+            height: 93%;
+            .hashtagsContainer {
+                height: 70%;
+            }
+        }
+    }    
+}
+

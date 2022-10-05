@@ -17,7 +17,8 @@ function Register(props) {
     const [reqErrState, setReqErrState] = useState(false)
     const [reqErrContent, setErrContent] = useState()
 
-    const ValidateAndAccept = () => {
+    const ValidateAndAccept = (e) => {
+        e.preventDefault();
         if (!state.name || !state.userName || !state.password || !state.rePassword) {
             return
         }
@@ -61,7 +62,10 @@ function Register(props) {
     }
 
     return (
-        <div className='form'>
+        <form className='form' onSubmit={(e) => {
+            setCheck(true)
+            ValidateAndAccept(e)
+        }}>
             <p className="emptinessErr">
                 {
                     reqErrState &&
@@ -153,13 +157,10 @@ function Register(props) {
                     </span>
                     : ''
             }
-            <button className="registerBtn" onClick={() => {
-                setCheck(true)
-                ValidateAndAccept()
-            }}>
+            <button className="registerBtn">
                 ثبت نام
             </button>
-        </div>
+        </form>
     )
 }
 

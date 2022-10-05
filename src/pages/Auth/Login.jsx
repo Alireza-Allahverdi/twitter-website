@@ -19,7 +19,8 @@ function Login(props) {
         })
     }
 
-    const ValidateAndAccept = () => {
+    const ValidateAndAccept = (e) => {
+        e.preventDefault()
         if (!field.username || !field.password) {
             return
         }
@@ -52,7 +53,10 @@ function Login(props) {
     }
 
     return (
-        <div className="form">
+        <form className="form" onSubmit={(e) => {
+            setCheck(true)
+            ValidateAndAccept(e)
+        }}>
             <p className='emptinessErr'>
                 {
                     reqErrState &&
@@ -102,13 +106,10 @@ function Login(props) {
                         : ''
                 }
             </p>
-            <button className="loginBtn" onClick={() => {
-                setCheck(true)
-                ValidateAndAccept()
-            }}>
+            <button className="loginBtn">
                 ورود
             </button>
-        </div>
+        </form>
     )
 }
 

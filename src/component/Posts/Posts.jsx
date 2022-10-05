@@ -43,7 +43,8 @@ function Posts(props) {
             <div className="posterProfile"> {/* post tweeters name, id,img */}
                 <span className='temporarily'> {/* a temporairly used icon instead of img */}
                     {
-                        props.tweetInfo.user.image ?
+                        props.tweetInfo.user.image &&
+                            props.tweetInfo.user.image !== "undefined" ?
                             <img className='posterImg' src={props.tweetInfo.user.image} alt="" />
                             : <FontAwesomeIcon icon={faImage} />
 

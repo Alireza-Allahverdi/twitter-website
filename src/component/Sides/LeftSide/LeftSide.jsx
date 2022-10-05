@@ -78,7 +78,7 @@ function LeftSide() {
                      <div className="spinner"></div>
                   </div>
                   :
-                  userInfo.image ||
+                  userInfo.image &&
                      userInfo.image !== "undefined" ?
                      <img src={userInfo.image} alt="" />
                      : <FontAwesomeIcon icon={faUser} />

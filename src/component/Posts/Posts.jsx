@@ -62,7 +62,8 @@ function Posts(props) {
                 <span dangerouslySetInnerHTML={{ __html: CheckForHashTag(props.tweetInfo.text) }}>
                 </span>
                 {
-                    props.tweetInfo.image ?
+                    props.tweetInfo.image &&
+                        props.tweetInfo.image !== "undefined" ?
                         <img className='postsImage' src={props.tweetInfo.image} alt="" />
                         : ''
                 }

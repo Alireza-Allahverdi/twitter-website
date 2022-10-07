@@ -1,5 +1,5 @@
 import React, { Fragment, useRef, useState } from 'react'
-import { faImage } from '@fortawesome/free-solid-svg-icons'
+import { faImage, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { SendTweet } from '../../../api/tweet-api'
 import { setLoaderState, setTweetText, updateHashtagList, useTweetDispatch, useTweetState } from '../../../context/TweetContext'
@@ -52,10 +52,11 @@ function NewTweetSlot() {
                         <div className="tweetContainer">
                             <span>
                                 {
-                                    localStorage.getItem("image") ?
+                                    localStorage.getItem("image") &&
+                                    localStorage.getItem("image")!== "undefined" ?
                                         <img src={localStorage.getItem("image")} alt="" className='tweetUserImg' />
                                         :
-                                        <FontAwesomeIcon icon={faImage} />
+                                        <FontAwesomeIcon icon={faUser} className={"userIcon"}/>
                                 }
                             </span>
                             <textarea

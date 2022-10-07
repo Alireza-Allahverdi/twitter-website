@@ -81,7 +81,7 @@ function LeftSide() {
                   userInfo.image &&
                      userInfo.image !== "undefined" ?
                      <img src={userInfo.image} alt="" />
-                     : <FontAwesomeIcon icon={faUser} />
+                     : <FontAwesomeIcon icon={faUser} className={"userIcon"}/>
 
             }
             <div className="profileText">
